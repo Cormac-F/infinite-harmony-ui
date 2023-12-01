@@ -1,6 +1,3 @@
-
-<h1>Pull Request Checklist<h1>
-
 # Pull Request Checklist
 
 - [ ] **Code Review**: Reviewed and ensured code quality.
