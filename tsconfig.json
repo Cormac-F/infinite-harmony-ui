@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "target": "ES5",
+        "sourceMap": true,
+        "noImplicitAny": true
+    },
+    "include": ["./**/*"],
+    "exclude": [
+        "node_modules/**/*",
+        "./dist/**/*"
+    ]
+}
