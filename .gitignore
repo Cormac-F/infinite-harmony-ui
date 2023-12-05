@@ -1288,3 +1288,4 @@ node_modules/yallist/README.md
 node_modules/yallist/yallist.js
 .DS_Store
 dist/views/views/index.html
+dist/
