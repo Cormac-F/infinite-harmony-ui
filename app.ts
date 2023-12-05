@@ -43,4 +43,4 @@ app.get('/', async (req: Request, res: Response) => {
 });
 
 // ESLint test
-const { ESLint } = require('eslint'); 
+const { ESLint } = require('eslint');  
