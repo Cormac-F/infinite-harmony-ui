@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "npx tsc && cp -R views dist/views && node dist/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "author": "",
   "license": "ISC",
