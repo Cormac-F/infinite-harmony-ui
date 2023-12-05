@@ -1289,3 +1289,4 @@ node_modules/yallist/yallist.js
 .DS_Store
 dist/views/views/index.html
 dist/
+node_modules/
