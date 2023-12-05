@@ -41,3 +41,6 @@ app.listen(3000, () => {
 app.get('/', async (req: Request, res: Response) => {
     res.render('index', { title: 'Home' });
 });
+
+// ESLint test
+const { ESLint } = require('eslint'); 
