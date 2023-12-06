@@ -3,7 +3,11 @@ name: Docker Image CI
 on:
     push:
         branches:
-            - main
+            - "US037-deploy-frontend-to-aws"
+    pull_request:
+        branches:
+            - "main"
+            - "ready-for-sign-off"
 jobs:
 
     build:
