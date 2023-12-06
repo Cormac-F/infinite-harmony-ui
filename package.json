@@ -4,7 +4,7 @@
   "description": "Team_1_2023_Academy_Sprints",
   "main": "app.js",
   "scripts": {
-    "start": "npx tsc && cp -R views dist/views && node dist/app.js",
+    "start": "npx ts-node app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
