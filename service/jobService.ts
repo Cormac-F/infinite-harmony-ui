@@ -1,0 +1,13 @@
+import { Job } from '../model/job';
+
+const axios = require('axios');
+
+module.exports.getJobSpecById = async function (id: number): Promise<Job> {
+    try {
+        const response = await axios.get('http://localhost:3000/api/job-specification/' + id);
+
+        return response.data;
+    } catch (e) {
+        throw new Error('Could not not get job specification by id');
+    }
+}
