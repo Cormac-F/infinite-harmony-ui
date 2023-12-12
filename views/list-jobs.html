@@ -45,6 +45,7 @@
                             <tr>
                                 <th scope="col">Role ID</th>
                                 <th scope="col">Role Name</th>
+                                <th scope="col">Band Name</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,6 +53,7 @@
                         <tr>
                             <td>{{ job.roleID }}</td>
                             <td><a href="/list-jobs/{{ job.roleID }}">{{ job.roleName }}</a></td>
+                            <td><a href="/list-jobs/{{ job.roleID }}">{{ job.bandName }}</a></td>
                         </tr>
                         {% endfor %}
                         </tbody>
