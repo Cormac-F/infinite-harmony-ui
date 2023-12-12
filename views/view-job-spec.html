@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap">
-    <title>Job Specifications</title>
+    <title>{{ job.roleName }} Specification Summary</title>
     <link rel="icon" href="../public/images/favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link  rel="stylesheet" href="../public/css/styles.css">
@@ -36,20 +36,44 @@
             </div>
         </div>
     </nav>
-
-    <section>
-        <div class="container h-100 mt-5 mb-5">
-            {% if job %}
-                <h2 class="pb-3">{{ job.specSummary }}</h2>
-            {% else %}
-                could not find job
-            {% endif %}
-            <p>This is some information about our company.</p>
-            <p>Log in to get started.</p>
+    
+    <main class="flex-shrink-0">
+        <div class="spec-jobs-container container" id="spec-container">
+            <section class="jobs" id="jobs">
+                <h2>{{ job.roleName }}</h2>
+                <div class="table-responsive-spec">
+                    <table class="table lh-2" id="table-spec">
+                        <thead>
+                            <tr>
+                                <th scope="col">Job Specification Summary:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% if job %}
+                            <tr>
+                                <td class="spec-summary">{{ job.specSummary }}</td>
+                            </tr>
+                        </tbody>
+                        <thead class="mt-5">
+                            <tr>
+                                <th scope="col">SharePoint Link:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a target="_blank" href="{{ job.sharepointLink }}" class="btn btn-primary">SharePoint Link</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                        {% else %}
+                            could not find job
+                        {% endif %}
+                </div>     
+            </section>
         </div>
-    </section>
+    </main>
 
-    <footer class="footer pt-4">
+    <footer id="footer" class="footer mt-auto py-3 shadow-sm">
         <div class="container text-center">
             <div class="mt-3 mb-2">
                 <p class="mb-4">Need help?</p>

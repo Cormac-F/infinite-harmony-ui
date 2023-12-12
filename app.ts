@@ -42,4 +42,4 @@ app.get('/', async (req: Request, res: Response) => {
     res.render('index', { title: 'Home' });
 });
 
-require('./controller/jobController')(app);
+require("./controller/jobController")(app);
