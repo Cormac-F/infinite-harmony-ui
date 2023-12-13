@@ -1,4 +1,5 @@
 import { Job } from "../model/job";
+import { Responsibility } from "../model/responsibility";
 
 const axios = require('axios');
 
@@ -8,6 +9,16 @@ module.exports.getJobSpecById = async function (id: number): Promise<Job> {
 
         return response.data;
     } catch (e) {
-        throw new Error('Could not not get job specification by id')
+        throw new Error('Could not get job specification by id')
+    }
+}
+
+module.exports.getRoleResponsibilityById = async function (id: number): Promise<Responsibility[]> {
+    try {
+        const response = await axios.get('http://localhost:8080/api/responsibilities-per-role/' + id);
+
+        return response.data;
+    } catch (e) {
+        throw new Error('Could not get role responsibilities by id')
     }
 }
