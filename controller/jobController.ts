@@ -1,7 +1,7 @@
 import { Job } from "../model/job";
 import { Request, Response, Application } from "express";
 
-const jobService = require("../service/jobService")
+const jobService = require("../service/jobService");
 
 module.exports = function(app: Application){
     app.post("/index", async (req: Request, res: Response) => {
