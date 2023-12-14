@@ -1,3 +1,106 @@
+@font-face {
+    font-family: 'Century Gothic', sans-serif !important;
+    src: url(https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap);
+}
+
+.body {
+    font-family: 'Century Gothic', sans-serif !important;
+    line-height: 1;
+}
+
+h1 {
+    font-family: 'century gothic', sans-serif;
+}
+
+.navbar-nav, .nav-item, .nav-link {
+    font-size: 1.1em;
+    font-weight: 300;
+    color: #252d4f;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+
+.navbar-nav, .nav-item, .nav-link:hover {
+    font-size: 1.1em;
+    font-weight: 300;
+    color: #61a83f;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+
+.navbar-collapse:hover {
+    color: #252d4f;
+}
+
+.btn {
+    background-color: #283583;
+    border: none;
+    color: #ffff;
+
+}
+
+.btn:hover {
+    background-color: #61a83f;
+    color: #ffff;
+}
+
+.text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    background-color: #283583;
+}
+
+.button-container {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+
+main {
+    width: 100%;
+    height: 65vh;
+    background-image: url("../images/hero-index.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main .text-container h1 {
+    font-size: 5em;
+    font-weight: 700;
+
+}
+
+main .text-container p {
+    font-size: 2.5em;
+    font-weight: 300;
+}
+
+main .text-container em {
+	font-style: normal;
+	background-color: #283583;;
+}
+
+footer {
+    background-color: #575756;
+    color: #fff;
+    font-family: 300;
+}
+
+.link-container a {
+    color: #fff;
+}
 .jobs h2 {
     padding: 20px 0 20px 10px;
 }
