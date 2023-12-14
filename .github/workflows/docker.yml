@@ -1,10 +1,6 @@
 name: Docker Image CI
 
 on: 
-  pull_request:
-    branches: 
-      - main
-      - ready-for-sign-off
   push:
     branches: 
       - main
