@@ -2,13 +2,13 @@ import { Application, Request, Response } from "express";
 import { Job } from "../model/job";
 import { Responsibility } from "../model/responsibility";
 
-const jobService = require('../service/jobService');
+const jobService = require("../service/jobService");
 
 module.exports = function(app: Application){
 
-    app.get('/list-jobs/:id', async (req: Request, res: Response) => {
-        let data: Job
-        let data2: Responsibility[]
+    app.get("/list-jobs/:id", async (req: Request, res: Response) => {
+        let data: Job;
+        let data2: Responsibility[];
 
         try {
             data = await jobService.getJobSpecById(req.params.id);
@@ -17,6 +17,6 @@ module.exports = function(app: Application){
             console.error(e);
         }
 
-        res.render('view-job-spec', { job: data, responsibilities: data2 } )
-    })
-}
+        res.render("view-job-spec", { job: data, responsibilities: data2 } );
+    });
+};
