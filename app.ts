@@ -1,4 +1,5 @@
 import { Application, Request, Response } from "express";
+import { env } from "process";
 
 const express = require("express");
 const path = require("path");
@@ -41,3 +42,5 @@ app.listen(3000, () => {
 app.get("/", async (req: Request, res: Response) => {
     res.render("index", { title: "Home" });
 });
+
+require("./controller/jobController")(app);
