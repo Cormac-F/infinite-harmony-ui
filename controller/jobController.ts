@@ -4,6 +4,10 @@ import { Job } from "../model/job";
 const jobService = require("../service/jobService");
 
 module.exports = function(app: Application){
+    app.post("/index", async (req: Request, res: Response) => {
+        res.redirect("job-roles");
+    });
+
     app.get("/job-roles", async (req: Request, res: Response) => {
         let data: Job[] | undefined;
 
