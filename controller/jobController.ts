@@ -1,7 +1,7 @@
 import { Application, Request, Response } from "express";
 import { Job } from "../model/job";
 
-const jobService = require('../service/jobService');
+const jobService = require("../service/jobService");
 
 module.exports = function(app: Application){
     app.get("/job-roles", async (req: Request, res: Response) => {
@@ -14,10 +14,10 @@ module.exports = function(app: Application){
         }
         
         res.render("list-jobs", { job: data } );
-    })
+    });
 
-    app.get('/list-jobs/:id', async (req: Request, res: Response) => {
-        let data: Job
+    app.get("/list-jobs/:id", async (req: Request, res: Response) => {
+        let data: Job;
 
         try {
             data = await jobService.getJobSpecById(req.params.id);
@@ -25,7 +25,7 @@ module.exports = function(app: Application){
             console.error(e);
         }
 
-        res.render('view-job-spec', { job: data } );
-    })
-}
+        res.render("view-job-spec", { job: data } );
+    });
+};
 
