@@ -4,7 +4,6 @@ on:
   push:
     branches: 
       - main
-      - ready-for-sign-off
   
 jobs:
 
