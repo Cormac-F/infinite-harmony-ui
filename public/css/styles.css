@@ -3,7 +3,12 @@
     src: url(https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap);
 }
 
-.body {
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
     font-family: 'Century Gothic', sans-serif !important;
     line-height: 1;
 }
@@ -55,7 +60,7 @@ h1 {
 
 .button-container {
     position: absolute;
-    top: 65%;
+    top: 68%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -103,7 +108,55 @@ main .text-container em {
 	background-color: #283583;;
 }
 
+.table a {
+    color : #283583;
+}
+
+.table a:hover {
+    color : #61a83f;
+}
+
+.table .btn {
+    background-color: #283583;
+    color: #ffff;
+}
+
+.table .btn:hover {
+    background-color: #61a83f;
+    color: #ffff;
+}
+
+.btn:hover {
+    background-color: #61a83f;
+    color: #ffff;
+}
+
+.jobs h2 {
+    padding: 20px 0 20px 10px;
+}
+
+.table tr th {
+    padding-left: 20px;
+}
+
+.table tr td {
+    padding-left: 20px;
+    line-height: 2;
+}
+
+.table-responsive-spec {
+    display: inline;
+    text-align: justify;
+}
+
+.spec-summary {
+    white-space: pre-line;
+}
+
 footer {
+    bottom: 0;
+    width: 100%;
+    left: 0;
     background-color: #575756;
     color: #fff;
     font-family: 300;

@@ -1,12 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap">
-    <title>View Jobs Roles | Kainos</title>
+    <title>{{ job.roleName }} Specification Summary</title>
     <link rel="icon" href="../public/images/favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../public/css/styles.css">
+    <link  rel="stylesheet" href="../public/css/styles.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-light sticky-top shadow-sm p-3 bg-white rounded">
@@ -34,31 +36,37 @@
         </div>
     </nav>
     <main class="flex-shrink-0">
-        <div class="list-jobs-container container" id="jobs-container">
-            <section id="jobs"  class="jobs">
-                <h2>Jobs</h2>
-                {% if job and job.length > 0 %}
-                <div class="table-responsive">
-                    <table class="table table-hover" id="table">
+        <div class="spec-jobs-container container" id="spec-container">
+            <section class="jobs" id="jobs">
+                <h2>{{ job.roleName }}</h2>
+                <div class="table-responsive-spec">
+                    <table class="table lh-2" id="table-spec">
                         <thead>
                             <tr>
-                                <th scope="col">Role ID</th>
-                                <th scope="col">Role Name</th>
+                                <th scope="col">Job Specification Summary:</th>
                             </tr>
                         </thead>
                         <tbody>
-                    {% for job in job %}      
-                        <tr>
-                            <td>{{ job.roleID }}</td>
-                            <td><a href="/list-jobs/{{ job.roleID }}">{{ job.roleName }}</a></td>
-                        </tr>
-                        {% endfor %}
+                        {% if job %}
+                            <tr>
+                                <td class="spec-summary">{{ job.specSummary }}</td>
+                            </tr>
+                        </tbody>
+                        <thead class="mt-5">
+                            <tr>
+                                <th scope="col">SharePoint Link:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a target="_blank" href="{{ job.sharepointLink }}" class="btn btn-primary">SharePoint Link</a></td>
+                            </tr>
                         </tbody>
                     </table>
-                    {% else %}
-                        There are no jobs
-                    {% endif %}
-                </div>
+                        {% else %}
+                            could not find job
+                        {% endif %}
+                </div>     
             </section>
         </div>
     </main>
