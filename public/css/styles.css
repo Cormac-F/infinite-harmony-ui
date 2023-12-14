@@ -41,7 +41,6 @@ h1 {
     background-color: #283583;
     border: none;
     color: #ffff;
-
 }
 
 .btn:hover {
@@ -86,6 +85,19 @@ main .text-container h1 {
     font-weight: 700;
 }
 
+.jobs h2 {
+    padding: 20px 0 20px 10px;
+}
+
+.table tr th {
+    padding-left: 20px;
+}
+
+.table tr td {
+    padding-left: 20px;
+    line-height: 2;
+}
+
 main .text-container p {
     font-size: 2.5em;
     font-weight: 300;
@@ -95,7 +107,6 @@ main .text-container em {
 	font-style: normal;
 	background-color: #283583;;
 }
-
 
 .table a {
     color : #283583;

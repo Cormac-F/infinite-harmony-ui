@@ -6,7 +6,7 @@ module.exports = {
       "eslint:recommended",
       "plugin:@typescript-eslint/recommended"
     ],
-    ignorePatterns: ["node_modules/", "dist/"],
+    ignorePatterns: ["node_modules/", "dist/", "app.ts"],
     env: {
         node: true,
     },
@@ -14,5 +14,6 @@ module.exports = {
         semi: ["error", "always"],
         quotes: ["error", "double"],
         "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/no-unused-vars": "off",
     },
   };
