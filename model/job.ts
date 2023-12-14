@@ -1,5 +1,9 @@
 export class Job {
-    roleID: number
-    roleName: string
     capabilityName: string
+    roleID?: number;
+    roleName?: string;
+    bandID?: number;
+    familyID?: number;
+    specSummary?: string;
+    sharepointLink?: string;
 }
