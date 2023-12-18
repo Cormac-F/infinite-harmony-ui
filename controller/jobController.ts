@@ -20,7 +20,7 @@ module.exports = function(app: Application){
         res.render("list-jobs", { job: data } );
     });
 
-    app.get("/list-jobs/:id", async (req: Request, res: Response) => {
+    app.get ("/list-jobs/:id", async (req: Request, res: Response) => {
         let data: Job;
 
         try {
@@ -28,7 +28,6 @@ module.exports = function(app: Application){
         } catch (e) {
             console.error(e);
         }
-
         res.render("view-job-spec", { job: data } );
     });
 };
