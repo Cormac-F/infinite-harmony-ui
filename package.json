@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "npx ts-node app.ts",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/unit/**/*.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "author": "",
