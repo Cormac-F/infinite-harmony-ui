@@ -1,17 +1,18 @@
-var axios = require('axios');
-var MockAdapter = require('axios-mock-adapter');
-var chai = require('chai');
+var axios = require("axios");
+var MockAdapter = require("axios-mock-adapter");
+var chai = require("§chai");
 const expect = chai.expect;
-const JobService = require('../../dist/service/jobService');
+const JobService = require("../../dist/service/jobService");
 
 const job = {
     roleID: "1001",
     roleName: "Test Role",
     bandName: "Test Band"
-}
-describe('jobService', function () {
-    describe('getJobs', function () {
-        it('should return a list of job roles from response', async () => {
+};
+
+describe("jobService", function () {
+    describe("getJobs", function () {
+        it("should return a list of job roles from response", async () => {
             var mock = new MockAdapter(axios);
             const data = [job];
 
@@ -30,10 +31,10 @@ describe('jobService', function () {
                 await JobService.getJobs();
 
             } catch (e) {
-                var error = e.message
+                error = e.message
             }
             
             expect(error).to.equal("Could not get jobs");
-        })
-    })
+        });
+    });
 })
