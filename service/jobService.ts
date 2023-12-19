@@ -8,7 +8,7 @@ module.exports.getJobs = async function (): Promise<Job> {
 
         return response.data;
     } catch (e) {
-        throw new Error("Could not get job");
+        throw new Error("Could not get jobs");
     }
 };
   
