@@ -15,6 +15,6 @@ module.exports = {
         quotes: ["error", "double"],
         "@typescript-eslint/no-var-requires": "off",
         "@typescript-eslint/no-unused-vars": "off",
-        ethers: "off",
+        "ethers": "off",
     },
   };
