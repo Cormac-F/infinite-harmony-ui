@@ -1,6 +1,8 @@
 const { Builder, By, until } = require("selenium-webdriver");
 const chai = require("chai");
 
+const webdriver = require("selenium-webdriver");
+
 describe("CapabilityTest", () => {
   it("should scroll to find capability name after clicking the Employee button", async () => {
     let driver = await new Builder().forBrowser("chrome").build();
