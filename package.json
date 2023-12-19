@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "npx ts-node app.ts",
-    "test": "mocha test/**/*.js",
+    "test": "mocha test/unit/**/*.js",
+    "test-ui": "mocha --timeout 10000 test/ui/**/*.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "author": "",
@@ -14,6 +15,7 @@
     "@types/express-session": "^1.17.10",
     "axios": "^1.6.2",
     "bootstrap": "^5.3.2",
+    "chromedriver": "^120.0.0",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "nunjucks": "^3.2.4",
