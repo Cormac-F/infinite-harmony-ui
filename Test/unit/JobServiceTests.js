@@ -1,6 +1,6 @@
 var axios = require("axios");
 var MockAdapter = require("axios-mock-adapter");
-var chai = require("§chai");
+var chai = require("chai");
 const expect = chai.expect;
 const JobService = require("../../dist/service/jobService");
 
