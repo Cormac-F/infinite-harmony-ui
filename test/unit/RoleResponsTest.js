@@ -8,7 +8,6 @@ const responsibility = {
     responsibilityName: "Testing"
 }    
 
-
 describe("JobService", () => {
     describe("getRoleResponsibilityById", () => {
         it("should get role responsibilities by id", async () => {
@@ -21,8 +20,6 @@ describe("JobService", () => {
             var results = await jobService.getRoleResponsibilityById(1705);
 
             expect(results[0]).to.deep.equal(responsibility);
-
-
         })
 
         it("should throw 500 error", async () => {
@@ -42,11 +39,8 @@ describe("JobService", () => {
 
             expect(error).to.equal("Could not get role responsibilities by id");
 
-
         })
-    
     })
-    
-    })
+})
 
     
