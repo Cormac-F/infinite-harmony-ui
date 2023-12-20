@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap">
-    <title>View Jobs Roles | Kainos</title>
+    <title>View Job Roles | Kainos</title>
     <link rel="icon" href="../public/images/favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../public/css/styles.css">
@@ -11,13 +11,13 @@
 <body>
     <nav class="navbar navbar-expand-lg bg-light sticky-top shadow-sm p-3 bg-white rounded">
         <div class="container">
-            <a class="navbar-brand pb-2" href="./index.html">
+            <a class="navbar-brand pb-2" href="/">
                 <img src="../public/images/kainos-logo.png" alt="Kainos Logo" width="100" height="30">
             </a>
             <div class="navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item ml-4">
-                        <a class="nav-link" href="#">Employee</a>
+                        <a id="employee" class="nav-link" href="/job-roles">Employee</a>
                     </li>
                     <li class="nav-item ml-2">
                         <a class="nav-link" href="#">Admin</a>
@@ -36,24 +36,26 @@
 
     <main class="flex-shrink-0">
         <div class="list-jobs-container container" id="jobs-container">
-            <section id="jobs"  class="jobs">
+            <section id="jobs" class="mt-4">
                 <h2>Jobs</h2>
                 {% if job and job.length > 0 %}
-                <div class="table-responsive">
+                <div id="job-table" class="table-responsive">
                     <table class="table table-hover" id="table">
                         <thead>
                             <tr>
                                 <th scope="col">Role ID</th>
                                 <th scope="col">Role Name</th>
                                 <th scope="col">Band Level</th>
+                                <th scope="col">Capability Name</th>
                             </tr>
                         </thead>
                         <tbody>
                     {% for job in job %}      
                         <tr>
-                            <td>{{ job.roleID }}</td>
+                            <td>{{ job.roleID }}</td>                            
                             <td><a href="/list-jobs/{{ job.roleID }}">{{ job.roleName }}</a></td>
                             <td><a>{{ job.bandName }}</a></td>
+                            <td>{{ job.capabilityName }}</td>
                         </tr>
                         {% endfor %}
                         </tbody>
