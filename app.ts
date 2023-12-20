@@ -1,9 +1,11 @@
 import { Application, Request, Response } from "express";
+import { env } from "process";
 
 const express = require("express");
 const path = require("path");
 const nunjucks = require("nunjucks");
 const app = express();
+const session = require("express-session");
 
 // Nunjucks Configuration
 const appViews = path.join(__dirname, "/views/");

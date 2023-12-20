@@ -1,11 +1,10 @@
-import { Application, Request, Response } from "express";
 import { Job } from "../model/job";
 import { Responsibility } from "../model/responsibility";
+import { Request, Response, Application } from "express";
 
 const jobService = require("../service/jobService");
 
 module.exports = function(app: Application){
-
     app.post("/index", async (req: Request, res: Response) => {
         res.redirect("job-roles");
     });
@@ -32,7 +31,8 @@ module.exports = function(app: Application){
         } catch (e) {
             console.error(e);
         }
-
+  
         res.render("view-job-spec", { job: data, responsibilities: data2 } );
     });
 };
+

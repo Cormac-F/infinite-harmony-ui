@@ -41,7 +41,6 @@ h1 {
     background-color: #283583;
     border: none;
     color: #ffff;
-
 }
 
 .btn:hover {
@@ -59,16 +58,20 @@ h1 {
     background-color: #283583;
 }
 
+.text-container em {
+    line-height: 1.2;
+}
+
 .button-container {
     position: absolute;
-    top: 68%;
+    top: 65%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: #fff;
 }
 
-main .hero-section {
+.hero-section {
     width: 100%;
     height: 65vh;
     background-image: url("../images/hero-index.jpg");
@@ -81,9 +84,22 @@ main .hero-section {
     align-items: center;
 }
 
-main .text-container h1 {
+.text-container h1 {
     font-size: 5em;
     font-weight: 700;
+}
+
+.jobs h2 {
+    padding: 20px 0 20px 10px;
+}
+
+.table tr th {
+    padding-left: 20px;
+}
+
+.table tr td {
+    padding-left: 20px;
+    line-height: 2;
 }
 
 main .text-container p {
@@ -95,7 +111,6 @@ main .text-container em {
 	font-style: normal;
 	background-color: #283583;;
 }
-
 
 .table a {
     color : #283583;
