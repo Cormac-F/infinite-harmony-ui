@@ -45,14 +45,19 @@
                 </ol>
             </nav> 
         </div>
-        <div class="spec-jobs-container container" id="spec-container">    
+        <div class="spec-jobs-container container" id="spec-container">
+            {% if errormessage %}
+            <div class="alert alert-danger" role="alert">
+              {{ errormessage }}
+            </div>
+            {% endif %}
             <section class="jobs" id="jobs">
                 <h2>{{ job.roleName }}</h2>
                 <div class="table-responsive-spec">
                     <table class="table lh-2" id="table-spec">
                         <thead>
                             <tr>
-                                <th scope="col">Job Specification Summary:</th>
+                                <th scope="col">Job Role Specification Summary:</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -60,21 +65,40 @@
                             <tr>
                                 <td class="spec-summary">{{ job.specSummary }}</td>
                             </tr>
-                        </tbody>
-                        <thead class="mt-5">
-                            <tr>
-                                <th scope="col">SharePoint Link:</th>
-                            </tr>
-                        </thead>
-                        <tbody>
                             <tr>
                                 <td><a target="_blank" href="{{ job.sharepointLink }}" class="btn btn-primary">SharePoint Link</a></td>
+                            </tr>               
+                        </tbody>
+                        {% else %}
+                            <tbody>
+                                <tr>
+                                    <td>Could not find job</td>
+                                </tr>
+                            </tbody>
+                        {% endif %}
+                    </table>
+                    <table class="table lh-2" id="table-spec">
+                        <thead class="">
+                            <tr>
+                                <th scope="col">Role Responsibilities:</th>
+                            </tr>
+                        </thead>
+                        {% if responsibilities and responsibilities.length > 0 %}
+                        <tbody>
+                            {% for responsibility in responsibilities %}
+                                <tr>
+                                    <td>{{ responsibility.responsibilityName }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        {% else %}
+                        <tbody>
+                            <tr>
+                                <td>Could not find responsibility</td>
                             </tr>
                         </tbody>
-                    </table>
-                        {% else %}
-                            could not find job
                         {% endif %}
+                    </table>
                 </div>     
             </section>
         </div>

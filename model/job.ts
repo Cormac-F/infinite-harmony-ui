@@ -1,5 +1,5 @@
 export class Job {
-    capabilityName: string
+    capabilityName?: string;
     roleID?: number;
     roleName?: string;
     bandID?: number;
