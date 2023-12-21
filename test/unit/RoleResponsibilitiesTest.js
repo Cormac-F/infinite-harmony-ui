@@ -5,7 +5,7 @@ const chai = require("chai");
 const expect = chai.expect;
 const jobService = require("../../dist/service/jobService");
 const responsibility = {
-    responsibilityName: "Testing";
+    responsibilityName: "Testing"
 }    
 
 describe("JobService", () => {
