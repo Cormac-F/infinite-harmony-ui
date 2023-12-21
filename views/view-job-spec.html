@@ -36,6 +36,15 @@
         </div>
     </nav>
     <main class="flex-shrink-0">
+        <div class="container pt-1">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="/">Home</a></li>
+                  <li class="breadcrumb-item"><a href="/job-roles">Jobs Roles</a></li>
+                  <li class="breadcrumb-item active" aria-current="/list-jobs:{ job.roleName }">{{ job.roleName }}</li>
+                </ol>
+            </nav> 
+        </div>
         <div class="spec-jobs-container container" id="spec-container">
             {% if errormessage %}
             <div class="alert alert-danger" role="alert">
