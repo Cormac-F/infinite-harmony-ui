@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,9 +37,17 @@
     </nav>
 
     <main class="flex-shrink-0">
+        <div class="container pt-1">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li id="breadcrumb-home" class="breadcrumb-item breadcrumb-home"><a href="/">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="/job-roles">Job Roles</li>
+                </ol>
+            </nav>
+        </div>
         <div class="list-jobs-container container" id="jobs-container">
             <section id="jobs" class="mt-4">
-                <h2>Jobs</h2>
+                <h2>Job Roles</h2>
                 {% if job and job.length > 0 %}
                 <div id="job-table" class="table-responsive">
                     <table class="table table-hover" id="table">
@@ -53,7 +63,8 @@
                     {% for job in job %}      
                         <tr>
                             <td>{{ job.roleID }}</td>                            
-                            <td><a href="/list-jobs/{{ job.roleID }}">{{ job.roleName }}</a></td>
+                            <td><a href="/list-jobs/{{ job.roleID }}">{{ job.roleName }}</a></td>   
+                            <td><a id="roleName" href="/list-jobs/{{ job.roleID }}">{{ job.roleName }}</a></td>
                             <td><a>{{ job.bandName }}</a></td>
                             <td>{{ job.capabilityName }}</td>
                         </tr>

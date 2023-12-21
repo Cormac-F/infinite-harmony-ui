@@ -37,6 +37,22 @@ h1 {
     color: #252d4f;
 }
 
+.breadcrumb {
+    background-color: #fff;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+
+.breadcrumb li a {
+    color: #252d4f;
+    text-decoration: none;
+}
+
+.breadcrumb li a:hover {
+    color: #61a83f;
+    text-decoration: underline;
+}
+
 .btn {
     background-color: #283583;
     border: none;
