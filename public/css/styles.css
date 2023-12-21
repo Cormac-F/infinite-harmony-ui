@@ -64,17 +64,6 @@ h1 {
     color: #ffff;
 }
 
-.btn-back {
-    background-color: #ffffff;
-    border: none;
-    color: #283583;
-}
-
-.btn-back:hover {
-    background-color: #ffffff;
-    color: #61a83f;
-}
-
 .text-container {
     position: absolute;
     top: 50%;
