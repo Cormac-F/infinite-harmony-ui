@@ -8,7 +8,7 @@ module.exports.getJobs = async function (): Promise<Job> {
         const response = await axios.get("http://localhost:8080/api/job-roles");
         return response.data;
     } catch (e) {
-        throw new Error("Could not get job");
+        throw new Error("Could not get jobs");
     }
 };
 
@@ -29,5 +29,4 @@ module.exports.getRoleResponsibilityById = async function (id: number): Promise<
         throw new Error("Could not get role responsibilities by id");
     }
 };
-
 

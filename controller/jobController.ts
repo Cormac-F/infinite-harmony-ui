@@ -35,4 +35,3 @@ module.exports = function(app: Application){
         res.render("view-job-spec", { job: data, responsibilities: data2 } );
     });
 };
-
