@@ -6,7 +6,7 @@ const expect = chai.expect;
 const jobService = require("../../dist/service/jobService");
 const responsibility = {
     responsibilityName: "Testing"
-}    
+};
 
 describe("JobService", () => {
     describe("getRoleResponsibilityById", () => {
@@ -20,7 +20,7 @@ describe("JobService", () => {
             var results = await jobService.getRoleResponsibilityById(1705);
 
             expect(results[0]).to.deep.equal(responsibility);
-        })
+        });
 
         it("should throw 500 error", async () => {
             var mock = new MockAdapter(axios);
