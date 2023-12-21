@@ -184,6 +184,10 @@ main .text-container em {
     white-space: pre-line;
 }
 
+.card {
+    background-color: #283583;
+}
+
 footer {
     bottom: 0;
     width: 100%;
@@ -196,3 +200,5 @@ footer {
 .link-container a {
     color: #fff;
 }
+
+
