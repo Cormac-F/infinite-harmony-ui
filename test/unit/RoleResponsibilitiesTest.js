@@ -5,7 +5,7 @@ const chai = require("chai");
 const expect = chai.expect;
 const jobService = require("../../dist/service/jobService");
 const responsibility = {
-    responsibilityName: "Testing"
+    responsibilityName: "Testing";
 }    
 
 describe("JobService", () => {
@@ -15,7 +15,7 @@ describe("JobService", () => {
 
             const data = [responsibility];
 
-            mock.onGet("http://localhost:8080/api/responsibilities-per-role/1705").reply(200, data)
+            mock.onGet("http://localhost:8080/api/responsibilities-per-role/1705").reply(200, data);
 
             var results = await jobService.getRoleResponsibilityById(1705);
 
@@ -27,20 +27,18 @@ describe("JobService", () => {
 
             const data = [responsibility];
 
-            mock.onGet("http://localhost:8080/api/responsibilities-per-role/1705").reply(500)
-
-            var error;
+            mock.onGet("http://localhost:8080/api/responsibilities-per-role/1705").reply(500);
 
             try {
                 await jobService.getRoleResponsibilityById(1705);
             } catch (e) {
-                var error = e.message
+                var error = e.message;
             }
 
             expect(error).to.equal("Could not get role responsibilities by id");
 
-        })
-    })
-})
+        });
+    });
+});
 
     
