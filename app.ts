@@ -47,5 +47,12 @@ app.listen(3000, () => {
     console.log("Server running on port 3000");
 });
 
+
+// Express Routes
+app.get("/", async (req: Request, res: Response) => {
+    res.render("index", { title: "Home" });
+});
+const authMiddleware = require("./middleware/auth");
+app.use(authMiddleware);
+
 require("./controller/jobController")(app);
-require("./controller/authController")(app);
