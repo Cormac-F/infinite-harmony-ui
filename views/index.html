@@ -10,41 +10,63 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../public/css/styles.css">
 </head>
-
 <body>
     <nav class="navbar navbar-expand-lg bg-light sticky-top shadow-sm p-3 bg-white rounded">
         <div class="container">
             <a class="navbar-brand pb-2" href="/">
                 <img src="../public/images/kainos-logo.png" alt="Kainos Logo" width="100" height="30">
             </a>
+            {% if isLoggedIn %}      
             <div class="navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item ml-4">
-                        <a id="employee" class="nav-link" href="/job-roles">Employee</a>
+                        <a class="nav-link" href="/job-roles">Employee</a>
                     </li>
                     <li class="nav-item ml-2">
                         <a class="nav-link" href="#">Admin</a>
                     </li>
                 </ul>
             </div>
+            {% else %}
+            <div class="navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ml-4">
+                    </li>
+                    <li class="nav-item ml-2">
+                    </li>
+                </ul>
+            </div>
+            {% endif %}
             <div class="navbar-collapse justify-content-end mr-4">
+            {% if isLoggedIn %}
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">Log Out</a>
+                    </li>
+                </ul>
+            {% else %}
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Log In</a>
                     </li>
                 </ul>
+            {% endif %}
             </div>
         </div>
     </nav>
-
     <main class="flex-shrink-0 hero-section">
         <section class="text-center bg-white">
             <div class="text-container">
                 <h1 class="display-4 pt-3 pb-2"><em>Welcome to Kainos</em></h1>
                 <p class="lead pl-2"><em>Digital Transformation Experts and WorkDay Partners</em></p>
             </div>
-            <div class="button-container">
+
+            <div class="button-container">            
+            {% if isLoggedIn %}
+                <a id="logout" class="btn btn-primary mt-5 btn-lg" href="/logout">Log Out</a>
+            {% else %}
                 <a id="login" class="btn btn-primary mt-5 btn-lg" href="/login">Log In</a>
+            {% endif %}
             </div>
         </section>
     </main>

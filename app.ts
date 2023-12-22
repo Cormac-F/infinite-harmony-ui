@@ -23,7 +23,7 @@ function setUpNunjucks(expressApp: Application) {
 setUpNunjucks(express);
 
 // Express Configuration
-app.set("view engine", "html", "ejs");
+app.set("view engine", "html");
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 
@@ -45,11 +45,6 @@ declare module "express-session" {
 
 app.listen(3000, () => {
     console.log("Server running on port 3000");
-});
-
-// Express Routes
-app.get("/", async (req: Request, res: Response) => {
-    res.render("index", { title: "Home" });
 });
 
 require("./controller/jobController")(app);
