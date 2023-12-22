@@ -50,8 +50,11 @@ app.listen(3000, () => {
 
 // Express Routes
 app.get("/", async (req: Request, res: Response) => {
-    res.render("index", { title: "Home" });
+    res.render("index.ejs", { title: "Home" });
 });
+
+require("./controller/authController")(app);
+ 
 const authMiddleware = require("./middleware/auth");
 app.use(authMiddleware);
 
