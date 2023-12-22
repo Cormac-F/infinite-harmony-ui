@@ -14,7 +14,12 @@ module.exports = function(app: Application) {
             req.session.token = await authService.login(data);
 
             res.redirect("/product");
-            //TODO: FIX THIS LMFSAOOOOOAOOOOO
+        } catch (e) {
+            console.error(e);
+
+            res.locals.errormessage = e.message;
+
+            res.render("login", req.body)
         }
     })
 }
