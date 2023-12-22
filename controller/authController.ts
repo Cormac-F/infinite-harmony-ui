@@ -7,17 +7,17 @@ const session = require("express-session");
 
 interface CustomSessionData extends SessionData {
     isLoggedIn: boolean;
-}
+};
 
 declare module "express-session" {
     interface SessionData {
         isLoggedIn: boolean;
     }
-}
+};
 
 module.exports = function(app: Application) {
     app.post("/login", async (req: Request, res: Response) => {
-        let data: Login = req.body;
+        const data: Login = req.body;
 
         try {
             req.session.token = await authService.login(data);
@@ -37,6 +37,5 @@ module.exports = function(app: Application) {
             }
         });
         res.redirect("/");
-    })
-
-}
+    });
+};

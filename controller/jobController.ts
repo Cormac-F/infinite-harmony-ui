@@ -20,20 +20,16 @@ declare module "express-session" {
 
 module.exports = function(app: Application){
     app.get("/", async (req: Request, res: Response) => {
-        let isLoggedIn: boolean = req.session.isLoggedIn;
-
         res.render("index", { isLoggedIn: req.session.isLoggedIn, title: "Home" });
     });
 
     app.post("/index", async (req: Request, res: Response) => {
-        let isLoggedIn: boolean = req.session.isLoggedIn;
-
         res.redirect("job-roles");
     });
 
     app.get("/login", async (req: Request, res: Response) => {
         res.render("login");
-    })
+    });
 
     app.get("/job-roles", async (req: Request, res: Response) => {
         let data: Job[] | undefined;
