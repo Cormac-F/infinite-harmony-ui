@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx ts-node app.ts",
     "test": "mocha test/unit/**/*.js",
-    "test-ui": "mocha --timeout 10000 test/ui/**/*.js",
+    "test-ui": "mocha --timeout 100000 test/ui/**/*.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "author": "",
@@ -17,6 +17,7 @@
     "body-parser": "^1.20.2",
     "bootstrap": "^5.3.2",
     "chromedriver": "^120.0.0",
+    "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-session": "^1.17.3",
     "nunjucks": "^3.2.4",

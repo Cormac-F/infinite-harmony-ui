@@ -7,6 +7,7 @@ const path = require("path");
 const nunjucks = require("nunjucks");
 const app = express();
 const session = require("express-session");
+const bodyParser = require("body-parser");
 
 // Nunjucks Configuration
 const appViews = path.join(__dirname, "/views/");
@@ -22,15 +23,19 @@ function setUpNunjucks(expressApp: Application) {
 setUpNunjucks(express);
 
 // Express Configuration
-app.set("view engine", "html");
+app.set("view engine", "html", "ejs");
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.use(express.json());
 
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(session({secret: process.env.APP_SECRET_KEY || config.secretKey, cookie: { maxAge: 60000 }}));
+app.use(session({
+    secret: process.env.APP_SECRET_KEY || config.secretKey, cookie: { maxAge: 60000,
+    resave: false,
+    saveUnintialized: true
+}}));
 
 declare module "express-session" {
     interface SessionData {
@@ -48,3 +53,4 @@ app.get("/", async (req: Request, res: Response) => {
 });
 
 require("./controller/jobController")(app);
+require("./controller/authController")(app);

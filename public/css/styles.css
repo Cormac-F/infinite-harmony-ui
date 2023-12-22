@@ -54,25 +54,29 @@ h1 {
 }
 
 .btn {
-    background-color: #283583;
+    background-color: #61a83f;
     border: none;
     color: #ffff;
 }
 
 .btn:hover {
-    background-color: #61a83f;
+    background-color: #283583;
     color: #ffff;
 }
 
-.btn-back {
-    background-color: #ffffff;
+.btn-login {
+    background-color: #61a83f;
     border: none;
+    color: #ffff;
+}
+ 
+.btn-login:hover {
+    background-color: #fff;
     color: #283583;
 }
 
-.btn-back:hover {
-    background-color: #ffffff;
-    color: #61a83f;
+.card {
+    background-color: #283583;
 }
 
 .text-container {
@@ -158,7 +162,7 @@ main .text-container em {
 }
 
 .btn:hover {
-    background-color: #61a83f;
+    background-color: #283583;
     color: #ffff;
 }
 
@@ -182,10 +186,6 @@ main .text-container em {
 
 .spec-summary {
     white-space: pre-line;
-}
-
-.card {
-    background-color: #283583;
 }
 
 footer {
