@@ -2,7 +2,6 @@ import { Job } from "../model/job";
 import { Login } from "../model/auth";
 import { Request, Response, Application } from "express";
 import { SessionData } from "express-session";
-import { log } from "console";
 
 const jobService = require("../service/jobService");
 const authService = require("../service/authService");
