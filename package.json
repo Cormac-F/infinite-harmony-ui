@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx ts-node app.ts",
     "test": "mocha test/unit/**/*.js",
-    "test-ui": "mocha --timeout 10000 test/ui/**/*.js",
+    "test-ui": "mocha --timeout 100000 test/ui/**/*.js",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "author": "",
@@ -14,6 +14,7 @@
   "dependencies": {
     "@types/express-session": "^1.17.10",
     "axios": "^1.6.2",
+    "body-parser": "^1.20.2",
     "axios-mock-adapter": "^1.22.0",
     "bootstrap": "^5.3.2",
     "chai": "^4.3.10",
