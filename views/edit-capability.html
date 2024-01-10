@@ -42,7 +42,7 @@
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="/">Home</a></li>
                   <li class="breadcrumb-item"><a href="/capability">Capabilities</a></li>
-                  <li class="breadcrumb-item active" aria-current="/edit-capability">Edit Capability Name </li>
+                  <li class="breadcrumb-item active" aria-current="/edit-capability">{{ capability.capabilityName }}</li>
                 </ol>
             </nav> 
         </div>
@@ -57,10 +57,10 @@
                     <h2>{{ capability.capabilityName }}</h2>
                     <div class="table-responsive-edit">
                         <table class="table lh-2" id="table-edit">
-                            <form action="/edit-capability" method="put">
+                            <form action="/edit-capability" method="post">
                                 <div class="form-group">
                                     <label for="capabilityName">Enter New Capability Name:</label>
-                                    <input type="text" id="capabilityName" name="capabilityName" class="form-control" value="{{ job.capabilityName }}" required>
+                                    <input type="text" id="capabilityName" name="capabilityName" class="form-control" value="{{ capability.capabilityName }}" required>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Next</button>
                             </form>

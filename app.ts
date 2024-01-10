@@ -36,6 +36,7 @@ app.use(session({ secret: "NOT HARDCODED SECRET", cookie: { maxAge: 60000 }}));
 declare module "express-session" {
     interface SessionData {
         job: Job
+        capability: Capability
     }
 }
 
@@ -49,3 +50,4 @@ app.get("/", async (req: Request, res: Response) => {
 });
 
 require("./controller/jobController")(app);
+require("./controller/capabilityController")(app);

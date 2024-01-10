@@ -48,22 +48,23 @@
         <div class="list-jobs-container container" id="jobs-container">
             <section id="jobs" class="mt-4">
                 <h2>Capabilities</h2>
-                {% if job and job.length > 0 %}
+                {% if capability and capability.length > 0 %}
                 <div id="job-table" class="table-responsive">
                     <table class="table table-hover" id="table">
                         <thead>
                             <tr>
                                 <th scope="col">Capability Name</th>
+                                <th scope="col">Edit Capability</th>
                             </tr>
                         </thead>
+                    {% for capability in capability %}      
                         <tbody>
-                            {% for job in job %}      
-                        <tr>
-                            <td>{{ job.capabilityName }}</td>
-                            <td><a href="/edit-capability{{ capability.capabilityID }}">Edit</a></td>
-                        </tr>
-                        {% endfor %}
-                        </tbody>
+                            <tr>                        
+                                <td>{{ capability.capabilityName }}</td>
+                                <td><a href="/list-capabilities/{{ capability.capabilityID }}">Edit</a></td>                        
+                            </tr>
+                            {% endfor %}
+                        </tbody>                        
                     </table>
                     {% else %}
                         There are no capabilities
