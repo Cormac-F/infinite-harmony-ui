@@ -2,12 +2,17 @@ import { Application, Request, Response } from "express";
 import { env } from "process";
 import { Job } from "./model/job";
 import { Capability } from "./model/capability";
+import config from "./config";
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 const express = require("express");
 const path = require("path");
 const nunjucks = require("nunjucks");
 const app = express();
 const session = require("express-session");
+const bodyParser = require("body-parser");
 
 // Nunjucks Configuration
 const appViews = path.join(__dirname, "/views/");
@@ -31,7 +36,12 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use(session({ secret: "NOT HARDCODED SECRET", cookie: { maxAge: 60000 }}));
+app.use(session({ 
+    secret: config.APP_SECRET_KEY, 
+    cookie: { maxAge: 1800000 },
+    resave: false,
+    saveUninitialized: false
+}));
 
 declare module "express-session" {
     interface SessionData {
