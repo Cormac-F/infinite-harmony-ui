@@ -15,7 +15,7 @@ module.exports.getAllCapabilities = async function (): Promise<Capability> {
         const response = await axios.get(`${API_URL}/api/capability`);
         return response.data;
     } catch (e) {
-        throw new Error("Could not get capabilities")
+        throw new Error("Could not get capabilities");
     }
 };
 
@@ -29,14 +29,14 @@ module.exports.getCapabilityById = async function (id: number): Promise<Capabili
 };
 
 module.exports.updateCapability = async function (capability: Capability ): Promise<number> {
-    const error: string = capabilityValidator.validateCapability(capability)
+    const error: string = capabilityValidator.validateCapability(capability);
     if(error) {
-        throw new Error(error)
+        throw new Error(error);
     }
     try {
-        const response = await axios.put(`${API_URL}/api/capability/` + capability.capabilityID , capability)
+        const response = await axios.put(`${API_URL}/api/capability/` + capability.capabilityID , capability);
         return response.data;
     } catch (e) {
-        throw new Error("Could not update Capability")
+        throw new Error("Could not update Capability");
     }
 };
