@@ -40,7 +40,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
-    secret: process.env.APP_SECRET_KEY || config.secretKey, cookie: { maxAge: 60000,
+    secret: process.env.APP_SECRET_KEY || config.secretKey, cookie: { maxAge: 600000,
     resave: false,
     saveUnintialized: true
 }}));

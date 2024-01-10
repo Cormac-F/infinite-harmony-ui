@@ -23,7 +23,7 @@ module.exports = function(app: Application) {
         }
     });
 
-    app.get("/logout", async (req: Request, res: Response) => {
+    app.post("/logout", async (req: Request, res: Response) => {
         req.session.destroy((err: Error) => {
             if (err) {
                 console.error(err);
