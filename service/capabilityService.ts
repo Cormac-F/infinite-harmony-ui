@@ -30,7 +30,7 @@ module.exports.updateCapability = async function (capability: Capability ): Prom
         throw new Error(error)
     }
     try {
-        const response = await axios.put("http://localhost:8080/api/capability/", capability)
+        const response = await axios.put("http://localhost:8080/api/capability/" + capability.capabilityID , capability)
         return response.data;
     } catch (e) {
         throw new Error("Could not update Capability")

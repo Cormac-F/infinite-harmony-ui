@@ -18,11 +18,12 @@ module.exports = function(app: Application){
         res.render("list-capabilities", { capability: data } )
     });
 
-    app.get("/list-capabilities/:id", async (req: Request, res: Response) => {
+    app.get("/edit-capability/:id", async (req: Request, res: Response) => {
         let data: Capability;
 
         try {
             data = await capabilityService.getCapabilityById(req.params.id);
+            req.session.capability = data
         } catch (e) {
             console.error(e);
         }
@@ -43,25 +44,25 @@ module.exports = function(app: Application){
     })
 
     app.get("/confirm-edit-capability", async( req: Request, res: Response) => {
-        res.render("confirm-edit-capability", req.session.job)
+        res.render("confirm-edit-capability", req.session.capability)
     })
 
     app.post("/confirm-edit-capability", async (req: Request, res: Response) => {
-        let data: Job = req.session.job
+        let data: Capability = req.session.capability
         let id: Number
 
         try{
             id = await capabilityService.updateCapability(data)
 
-            req.session.job = undefined
+            req.session.capability = undefined
 
-            res.redirect("/list-capabilities")
+            res.redirect("/capability")
         } catch (e) {
             console.error(e);
 
             res.locals.errormessage = e.message
 
-            res.render("confirm-edit-capability", req.session.job)
+            res.render("confirm-edit-capability", req.session.capability)
         }
     })
 }

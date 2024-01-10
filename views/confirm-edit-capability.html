@@ -42,7 +42,7 @@
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="/">Home</a></li>
                   <li class="breadcrumb-item"><a href="/capability">Capabilities</a></li>
-                  <li class="breadcrumb-item"><a href ="/edit-capability">Edit a Capability</a></li>
+                  <li class="breadcrumb-item"><a href ="/edit-capability">{{ capabilityName }}</a></li>
                   <li class="breadcrumb-item active" aria-current="/confirm-edit-capability">Confirm Edit</li>
                 </ol>
             </nav> 
@@ -54,10 +54,10 @@
             </div>
             {% endif %}
             <section class="jobs" id="jobs">
-                <form action="/confirm-edit-capability" method="put">
+                <form action="/confirm-edit-capability" method="post">
                     <div class="form-group">
-                        <label for="name">Capability Name: {{ capability.capabilityName }}</label>
-                        <a href="http://localhost:3000/edit-capability">Edit Name</a>
+                        <label for="capabilityName">Capability Name: {{ capabilityName }}</label>
+                        <a href="http://localhost:3000/capability">Edit</a>
                     </div>
                     <button type="submit" class="btn btn-primary">Confirm</button>
                 </form>
