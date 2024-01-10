@@ -56,8 +56,10 @@
             <section class="jobs" id="jobs">
                 <form action="/confirm-edit-capability" method="post">
                     <div class="form-group">
+                        <h3>
                         <label for="capabilityName">Capability Name: {{ capabilityName }}</label>
-                        <a href="http://localhost:3000/capability">Edit</a>
+                        </h3>
+                        <a href="http://localhost:3000/edit-capability/{{ capabilityID }}">Edit</a>
                     </div>
                     <button type="submit" class="btn btn-primary">Confirm</button>
                 </form>
