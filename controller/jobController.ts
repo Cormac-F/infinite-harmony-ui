@@ -25,7 +25,6 @@ module.exports = function(app: Application){
 
         try {
             data = await jobService.getJobs();
-            isLoggedIn = req.session.isLoggedIn;
         } catch (e) {
             console.error(e);
         }

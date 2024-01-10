@@ -1,5 +1,6 @@
 import * as dotenv from "dotenv";
 import { Job } from "../model/job";
+import { Responsibility } from "../model/responsibility";
 const axios = require("axios");
 
 dotenv.config();
@@ -23,3 +24,4 @@ module.exports.getJobSpecById = async function (id: number): Promise<Job> {
         throw new Error("Could not get job specification by id");
     }
 }
+
