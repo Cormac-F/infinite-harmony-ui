@@ -30,7 +30,7 @@
             {% if isLoggedIn %}
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/logout">Log Out</a>
+                        <td><button id="logoutButton" class="btn-logout">Log Out</button>
                     </li>
                 </ul>
             {% else %}
@@ -40,7 +40,6 @@
                     </li>
                 </ul>
             {% endif %}
-
             </div>
         </div>
     </nav>
@@ -114,5 +113,6 @@
             <div class="pt-4 pb-4">Copyright© 2023 Kainos. Registered in NI NI019370</div>
         </div>
     </footer>
+    <script src="/public/scripts/javascript.js"></script>
 </body>
 </html>

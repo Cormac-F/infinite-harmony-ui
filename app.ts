@@ -40,10 +40,11 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(session({
-    secret: process.env.APP_SECRET_KEY || config.secretKey, cookie: { maxAge: 600000,
+    secret: config.APP_SECRET_KEY, 
+    cookie: { maxAge: 1800000 },
     resave: false,
-    saveUnintialized: true
-}}));
+    saveUninitialized: true
+}));
 
 declare module "express-session" {
     interface SessionData {

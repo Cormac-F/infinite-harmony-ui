@@ -6,8 +6,6 @@ dotenv.config();
 
 const { API_URL } = process.env;
 
-console.log(API_URL)
-
 module.exports.getJobs = async function (): Promise<Job> {
     try {
         const response = await axios.get(`${API_URL}/api/job-roles`);
