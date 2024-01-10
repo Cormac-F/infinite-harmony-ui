@@ -5,6 +5,7 @@
         "sourceMap": true,
         "noImplicitAny": true
     },
+    "types": ["node", "dotenv/config"],
     "include": ["./**/*"],
     "exclude": [
         "node_modules/**/*",
