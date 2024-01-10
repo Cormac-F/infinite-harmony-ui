@@ -23,5 +23,5 @@ module.exports.getJobSpecById = async function (id: number): Promise<Job> {
     } catch (e) {
         throw new Error("Could not get job specification by id");
     }
-}
+};
 
