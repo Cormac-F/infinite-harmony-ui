@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap">
-    <title>View Job Roles | Kainos</title>
+    <title>View Capabilities | Kainos</title>
     <link rel="icon" href="../public/images/favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../public/css/styles.css">
@@ -41,43 +41,38 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li id="breadcrumb-home" class="breadcrumb-item breadcrumb-home"><a href="/">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="/job-roles">Job Roles</li>
+                  <li class="breadcrumb-item active" aria-current="/capability">Capabilities</li>
                 </ol>
             </nav>
         </div>
         <div class="list-jobs-container container" id="jobs-container">
             <section id="jobs" class="mt-4">
-                <h2>Job Roles</h2>
+                <h2>Capabilities</h2>
                 {% if job and job.length > 0 %}
                 <div id="job-table" class="table-responsive">
                     <table class="table table-hover" id="table">
                         <thead>
                             <tr>
-                                <th scope="col">Role ID</th>
-                                <th scope="col">Role Name</th>
-                                <th scope="col">Band Level</th>
                                 <th scope="col">Capability Name</th>
                             </tr>
                         </thead>
                         <tbody>
-                    {% for job in job %}      
+                            {% for job in job %}      
                         <tr>
-                            <td>{{ job.roleID }}</td>                            
-                            <td><a href="/list-jobs/{{ job.roleID }}">{{ job.roleName }}</a></td>   
-                            <td><a id="roleName" href="/list-jobs/{{ job.roleID }}">{{ job.roleName }}</a></td>
-                            <td><a>{{ job.bandName }}</a></td>
                             <td>{{ job.capabilityName }}</td>
+                            <td><a href="/edit-capability{{ capability.capabilityID }}">Edit</a></td>
                         </tr>
                         {% endfor %}
                         </tbody>
                     </table>
                     {% else %}
-                        There are no jobs
+                        There are no capabilities
                     {% endif %}
                 </div>
             </section>
         </div>
     </main>
+
     <footer id="footer" class="footer mt-auto py-3 shadow-sm">
         <div class="container text-center">
             <div class="mt-3 mb-2">
@@ -104,5 +99,5 @@
             <div class="pt-4 pb-4">Copyright© 2023 Kainos. Registered in NI NI019370</div>
         </div>
     </footer>
-</body>
-</html>
+    </body>
+    </html>
