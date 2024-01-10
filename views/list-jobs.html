@@ -43,6 +43,7 @@
             </div>
         </div>
     </nav>
+
     <main class="flex-shrink-0">
         <div class="container pt-1">
             <nav aria-label="breadcrumb">
@@ -62,6 +63,7 @@
                             <tr>
                                 <th scope="col">Role ID</th>
                                 <th scope="col">Role Name</th>
+                                <th scope="col">Band Level</th>
                                 <th scope="col">Capability Name</th>
                             </tr>
                         </thead>
@@ -69,7 +71,8 @@
                     {% for job in job %}      
                         <tr>
                             <td>{{ job.roleID }}</td>                            
-                            <td><a href="/list-jobs/{{ job.roleID }}">{{ job.roleName }}</a></td>
+                            <td><a id="roleName" href="/list-jobs/{{ job.roleID }}">{{ job.roleName }}</a></td>
+                            <td><a>{{ job.bandName }}</a></td>
                             <td>{{ job.capabilityName }}</td>
                         </tr>
                         {% endfor %}
