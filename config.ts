@@ -6,7 +6,7 @@ const generateRandomKey = () => {
 };
 
 const config = {
-    APP_SECRET_KEY: generateRandomKey()
+    APP_SECRET_KEY: process.env.APP_SECRET_KEY || generateRandomKey()
 };
 
 export default config;

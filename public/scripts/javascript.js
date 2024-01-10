@@ -1,21 +1,21 @@
-document.getElementById('logoutButton').addEventListener('click', function() {
-    fetch('/logout', {
-      method: 'POST',
+document.getElementById("logoutButton").addEventListener("click", function() {
+    fetch("/logout", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
       }),
     })
     .then(response => {
       if (response.ok) {
-        window.location.href = '/';
+        window.location.href = "/";
       } else {
-        console.error('Logout failed:', response.statusText);
+        console.error("Logout failed:", response.statusText);
       }
     })
     .catch(error => {
-      console.error('Error during logout:', error);
+      console.error("Error during logout:", error);
     });
   });
   

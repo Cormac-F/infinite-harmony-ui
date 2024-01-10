@@ -14,4 +14,4 @@ module.exports.login = async function (login: Login): Promise<void> {
     } catch (e) {
         throw new Error("Could not login");
     }
-}
+};
