@@ -30,13 +30,6 @@ module.exports = function(app: Application){
         res.render("edit-capability", { capability: data } );
     });
 
-    app.get("/edit-capability", async (req: Request, res: Response) => {
-        if (!req.session.capability) {
-            req.session.capability = {}
-        }
-        res.render("edit-capability")
-    })
-
     app.post("/edit-capability", async (req: Request, res: Response) => {
         req.session.capability["capabilityName"] = req.body.capabilityName
 
