@@ -1,7 +1,7 @@
 import * as dotenv from "dotenv";
 import { Job } from "../model/job";
 import { Responsibility } from "../model/responsibility";
-import { Capability } from "../model/capability";
+
 
 const axios = require("axios");
 

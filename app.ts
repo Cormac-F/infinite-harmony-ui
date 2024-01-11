@@ -47,6 +47,8 @@ declare module "express-session" {
     interface SessionData {
         job: Job
         capability: Capability
+        token: string;
+        isLoggedIn: boolean;
     }
 }
 
