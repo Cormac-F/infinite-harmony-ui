@@ -1,5 +1,4 @@
 import { Capability } from "../model/capability";
-import { Job } from "../model/job";
 import { Request, Response, Application } from "express";
 
 const capabilityService = require("../service/capabilityService");
@@ -11,11 +10,11 @@ module.exports = function(app: Application){
         let data: Capability[];
 
         try {
-            data = await capabilityService.getAllCapabilities()
+            data = await capabilityService.getAllCapabilities();
         } catch (e) {
             console.error(e);
         }
-        res.render("list-capabilities", { capability: data } )
+        res.render("list-capabilities", { capability: data } );
     });
 
     app.get("/edit-capability/:id", async (req: Request, res: Response) => {
@@ -23,7 +22,7 @@ module.exports = function(app: Application){
 
         try {
             data = await capabilityService.getCapabilityById(req.params.id);
-            req.session.capability = data
+            req.session.capability = data;
         } catch (e) {
             console.error(e);
         }
@@ -31,31 +30,31 @@ module.exports = function(app: Application){
     });
 
     app.post("/edit-capability", async (req: Request, res: Response) => {
-        req.session.capability["capabilityName"] = req.body.capabilityName
+        req.session.capability["capabilityName"] = req.body.capabilityName;
 
         res.redirect("/confirm-edit-capability")
-    })
+    });
 
     app.get("/confirm-edit-capability", async( req: Request, res: Response) => {
-        res.render("confirm-edit-capability", req.session.capability)
-    })
+        res.render("confirm-edit-capability", req.session.capability);
+    });
 
     app.post("/confirm-edit-capability", async (req: Request, res: Response) => {
-        let data: Capability = req.session.capability
-        let id: Number
+        const data: Capability = req.session.capability;
+        let id: number;
 
         try{
-            id = await capabilityService.updateCapability(data)
+            id = await capabilityService.updateCapability(data);
 
-            req.session.capability = undefined
+            req.session.capability = undefined;
 
-            res.redirect("/capability")
+            res.redirect("/capability");
         } catch (e) {
             console.error(e);
 
-            res.locals.errormessage = e.message
+            res.locals.errormessage = e.message;
 
-            res.render("confirm-edit-capability", req.session.capability)
+            res.render("confirm-edit-capability", req.session.capability);
         }
-    })
-}
+    });
+};

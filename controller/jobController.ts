@@ -1,4 +1,3 @@
-import { Capability } from "../model/capability";
 import { Job } from "../model/job";
 import { Responsibility } from "../model/responsibility";
 import { Request, Response, Application } from "express";
