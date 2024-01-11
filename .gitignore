@@ -1,0 +1,13 @@
+dist/app.js
+dist/app.js.map
+node_modules
+.idea/.gitignore
+.idea/infinite-harmony-ui.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.DS_Store
+dist/
+node_modules/
+.env
+

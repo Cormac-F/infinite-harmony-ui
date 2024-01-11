@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap">
+    <title>View Job Roles | Kainos</title>
+    <link rel="icon" href="../public/images/favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light sticky-top shadow-sm p-3 bg-white rounded">
+        <div class="container">
+            <a class="navbar-brand pb-2" href="/">
+                <img src="../public/images/kainos-logo.png" alt="Kainos Logo" width="100" height="30">
+            </a>
+            <div class="navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ml-4">
+                        <a id="employee" class="nav-link" href="/job-roles">Employee</a>
+                    </li>
+                    <li class="nav-item ml-2">
+                        <a id="admin" class="nav-link" href="/capability">Admin</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-collapse justify-content-end mr-4">
+                {% if isLoggedIn  %}
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <td><button id="logoutButtonNavBar" class="btn-logout">Log Out</button>
+                        </li>
+                    </ul>
+                {%  else  %}
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Log In</a>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-shrink-0">
+        <div class="container pt-1">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li id="breadcrumb-home" class="breadcrumb-item breadcrumb-home"><a href="/">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="/job-roles">Job Roles</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="list-jobs-container container" id="jobs-container">
+            <section id="jobs" class="mt-4">
+                <h2>Job Roles</h2>
+                {% if job and job.length > 0 %}
+                <div id="job-table" class="table-responsive">
+                    <table class="table table-hover" id="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Role ID</th>
+                                <th scope="col">Role Name</th>
+                                <th scope="col">Band Level</th>
+                                <th scope="col">Capability Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    {% for job in job %}      
+                        <tr>
+                            <td>{{ job.roleID }}</td>                            
+                            <td><a id="roleName" href="/list-jobs/{{ job.roleID }}">{{ job.roleName }}</a></td>
+                            <td><a>{{ job.bandName }}</a></td>
+                            <td>{{ job.capabilityName }}</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                        There are no jobs
+                    {% endif %}
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer id="footer" class="footer mt-auto py-3 shadow-sm">
+        <div class="container text-center">
+            <div class="mt-3 mb-2">
+                <p class="mb-4">Need help?</p>
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="link-container">
+                            <a target="_blank" href="https://kainossoftwareltd.sharepoint.com/SitePages/Home.aspx">SharePoint</a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="link-container">
+                            <a target="_blank" href="https://kainoshelp.atlassian.net/servicedesk/customer/portals">Jira Request</a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="link-container">
+                            <a target="_blank" href="https://web.yammer.com/main/">Viva Engage</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-2 link-container">Contact us @ <a href="https://www.kainos.com">Kainos.com</a></div>
+            <div class="pt-4 pb-4">Copyright© 2023 Kainos. Registered in NI NI019370</div>
+        </div>
+    </footer>
+    <script src="/public/scripts/javascript.js"></script>
+</body>
+</html>

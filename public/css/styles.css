@@ -1,0 +1,226 @@
+@font-face {
+    font-family: 'Century Gothic', sans-serif !important;
+    src: url(https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Century Gothic', sans-serif !important;
+    line-height: 1;
+}
+
+h1 {
+    font-family: 'century gothic', sans-serif;
+}
+
+.navbar-nav, .nav-item, .nav-link {
+    font-size: 1.1em;
+    font-weight: 300;
+    color: #252d4f;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+
+.navbar-nav, .nav-item, .nav-link:hover {
+    font-size: 1.1em;
+    font-weight: 300;
+    color: #61a83f;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+
+.navbar-collapse:hover {
+    color: #252d4f;
+}
+
+.breadcrumb {
+    background-color: #fff;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+
+.breadcrumb li a {
+    color: #252d4f;
+    text-decoration: none;
+}
+
+.breadcrumb li a:hover {
+    color: #61a83f;
+    text-decoration: underline;
+}
+
+.btn {
+    background-color: #61a83f;
+    border: none;
+    color: #ffff;
+}
+
+.btn:hover {
+    background-color: #283583;
+    color: #ffff;
+}
+
+.btn-login {
+    background-color: #61a83f;
+    border: none;
+    color: #ffff;
+}
+ 
+.btn-login:hover {
+    background-color: #fff;
+    color: #283583;
+}
+
+.btn-logout {
+    background-color: #fff;
+    border: none;
+    color: #252d4f;
+}
+ 
+.btn-logout:hover {
+    background-color: #fff;
+    color: #61a83f;
+}
+
+.card {
+    background-color: #283583;
+}
+
+.text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    background-color: #283583;
+}
+
+.text-container em {
+    line-height: 1.2;
+}
+
+.button-container {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+}
+
+.hero-section {
+    width: 100%;
+    height: 65vh;
+    background-image: url("../images/hero-index.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-container h1 {
+    font-size: 5em;
+    font-weight: 700;
+}
+
+.jobs h2 {
+    padding: 20px 0 20px 10px;
+}
+
+.table tr th {
+    padding-left: 20px;
+}
+
+.table tr td {
+    padding-left: 20px;
+    line-height: 2;
+}
+
+main .text-container p {
+    font-size: 2.5em;
+    font-weight: 300;
+}
+
+main .text-container em {
+	font-style: normal;
+	background-color: #283583;;
+}
+
+.table a {
+    color : #283583;
+}
+
+.table a:hover {
+    color : #61a83f;
+}
+
+.table .btn {
+    background-color: #283583;
+    color: #ffff;
+}
+
+.table .btn:hover {
+    background-color: #61a83f;
+    color: #ffff;
+}
+
+.btn:hover {
+    background-color: #283583;
+    color: #ffff;
+}
+
+.jobs h2 {
+    padding: 20px 0 20px 10px;
+}
+
+.table tr th {
+    padding-left: 20px;
+}
+
+.table tr td {
+    padding-left: 20px;
+    line-height: 2;
+}
+
+.table-responsive-spec {
+    display: inline;
+    text-align: justify;
+}
+
+.spec-summary {
+    white-space: pre-line;
+}
+
+footer {
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    background-color: #575756;
+    color: #fff;
+    font-family: 300;
+}
+
+.link-container a {
+    color: #fff;
+}
+
+.jobs h2 {
+    padding: 20px 0 20px 10px;
+}
+
+.table tr th {
+    padding-left: 20px;
+}
+
+.table tr td {
+    padding-left: 20px;
+    line-height: 2;
+}
