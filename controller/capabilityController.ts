@@ -3,7 +3,6 @@ import { Request, Response, Application } from "express";
 
 const capabilityService = require("../service/capabilityService");
 
-
 module.exports = function(app: Application){
 
     app.get("/capability", async (req: Request, res: Response) => {

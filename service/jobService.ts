@@ -2,19 +2,20 @@ import * as dotenv from "dotenv";
 import { Job } from "../model/job";
 import { Responsibility } from "../model/responsibility";
 
-
 const axios = require("axios");
 
 dotenv.config();
 
+
 const API_URL = process.env.API_URL;
+
 
 module.exports.getJobs = async function (): Promise<Job> {
     try {
         const response = await axios.get(`${API_URL}/api/job-roles`);
         return response.data;
     } catch (e) {
-        throw new Error("Could not get jobs");
+        throw new Error("Could not get job");
     }
 };
 
@@ -35,5 +36,4 @@ module.exports.getRoleResponsibilityById = async function (id: number): Promise<
         throw new Error("Could not get role responsibilities by id");
     }
 };
-
 

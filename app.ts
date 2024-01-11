@@ -34,7 +34,14 @@ app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.use(express.json());
 
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(session({
+    secret: config.APP_SECRET_KEY, 
+    cookie: { maxAge: 1800000 },
+    resave: false,
+    saveUninitialized: true
+}));
 
 app.use(session({ 
     secret: config.APP_SECRET_KEY, 
@@ -45,8 +52,8 @@ app.use(session({
 
 declare module "express-session" {
     interface SessionData {
-        job: Job
-        capability: Capability
+        job: Job;
+        capability: Capability;
         token: string;
         isLoggedIn: boolean;
     }
@@ -56,10 +63,12 @@ app.listen(3000, () => {
     console.log("Server running on port 3000");
 });
 
-// Express Routes
 app.get("/", async (req: Request, res: Response) => {
-    res.render("index", { title: "Home" });
+    const isLoggedIn: boolean = req.session.isLoggedIn;
+
+    res.render("index", { isLoggedIn, title: "Home" });
 });
 
 require("./controller/jobController")(app);
 require("./controller/capabilityController")(app);
+require("./controller/authController")(app);
