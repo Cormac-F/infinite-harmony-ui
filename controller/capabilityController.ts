@@ -32,7 +32,7 @@ module.exports = function(app: Application){
     app.post("/edit-capability", async (req: Request, res: Response) => {
         req.session.capability["capabilityName"] = req.body.capabilityName;
 
-        res.redirect("/confirm-edit-capability")
+        res.redirect("/confirm-edit-capability");
     });
 
     app.get("/confirm-edit-capability", async( req: Request, res: Response) => {
