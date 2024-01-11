@@ -1,5 +1,8 @@
 import { Application, Request, Response } from "express";
-import config from "./config"
+import { env } from "process";
+import { Job } from "./model/job";
+import { Capability } from "./model/capability";
+import config from "./config";
 import * as dotenv from 'dotenv';
 
 dotenv.config();
@@ -10,12 +13,6 @@ const nunjucks = require("nunjucks");
 const app = express();
 const session = require("express-session");
 const bodyParser = require("body-parser");
-
-declare module "express-session" {
-    interface SessionData {
-        isLoggedIn: boolean;
-    }
-}
 
 // Nunjucks Configuration
 const appViews = path.join(__dirname, "/views/");
@@ -46,9 +43,19 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app.use(session({ 
+    secret: config.APP_SECRET_KEY, 
+    cookie: { maxAge: 1800000 },
+    resave: false,
+    saveUninitialized: false
+}));
+
 declare module "express-session" {
     interface SessionData {
+        job: Job;
+        capability: Capability;
         token: string;
+        isLoggedIn: boolean;
     }
 }
 
@@ -63,4 +70,5 @@ app.get("/", async (req: Request, res: Response) => {
 });
 
 require("./controller/jobController")(app);
+require("./controller/capabilityController")(app);
 require("./controller/authController")(app);

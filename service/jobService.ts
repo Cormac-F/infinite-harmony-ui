@@ -1,11 +1,14 @@
 import * as dotenv from "dotenv";
 import { Job } from "../model/job";
 import { Responsibility } from "../model/responsibility";
+
 const axios = require("axios");
 
 dotenv.config();
 
-const { API_URL } = process.env;
+
+const API_URL = process.env.API_URL;
+
 
 module.exports.getJobs = async function (): Promise<Job> {
     try {
@@ -32,4 +35,6 @@ module.exports.getRoleResponsibilityById = async function (id: number): Promise<
     } catch (e) {
         throw new Error("Could not get role responsibilities by id");
     }
+
 };
+
