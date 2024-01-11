@@ -1,5 +1,6 @@
 import { Job } from "../model/job";
 import { Login } from "../model/auth";
+import { Responsibility } from "../model/responsibility";
 import { Request, Response, Application } from "express";
 import { SessionData } from "express-session";
 import { log } from "console";
@@ -48,17 +49,20 @@ module.exports = function(app: Application){
         res.render("list-jobs", { job: data, isLoggedIn: req.session.isLoggedIn } );
     });
 
-    app.get ("/list-jobs/:id", async (req: Request, res: Response) => {
+    app.get("/list-jobs/:id", async (req: Request, res: Response) => {
         let data: Job;
+        let data2: Responsibility[];
         let isLoggedIn: boolean = req.session.isLoggedIn;
 
         try {
             data = await jobService.getJobSpecById(req.params.id);
+            data2 = await jobService.getRoleResponsibilityById(req.params.id);
             isLoggedIn = req.session.isLoggedIn;
         } catch (e) {
             console.error(e);
         }
-        res.render("view-job-spec", { job: data, isLoggedIn: req.session.isLoggedIn } );
+  
+        res.render("view-job-spec", { job: data, responsibilities: data2, isLoggedIn: req.session.isLoggedIn } );
+
     });
 };
-

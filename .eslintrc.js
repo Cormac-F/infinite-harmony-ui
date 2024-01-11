@@ -9,6 +9,7 @@ module.exports = {
     ignorePatterns: ["node_modules/", "dist/", "app.ts"],
     env: {
         node: true,
+        mocha: true,
     },
     rules: {
         semi: ["error", "always"],

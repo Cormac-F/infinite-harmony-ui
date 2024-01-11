@@ -200,5 +200,15 @@ footer {
 .link-container a {
     color: #fff;
 }
+.jobs h2 {
+    padding: 20px 0 20px 10px;
+}
 
+.table tr th {
+    padding-left: 20px;
+}
 
+.table tr td {
+    padding-left: 20px;
+    line-height: 2;
+}
