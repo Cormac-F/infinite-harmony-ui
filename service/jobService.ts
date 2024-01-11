@@ -25,3 +25,11 @@ module.exports.getJobSpecById = async function (id: number): Promise<Job> {
     }
 };
 
+module.exports.getRoleResponsibilityById = async function (id: number): Promise<Responsibility[]> {
+    try {
+        const response = await axios.get(`${API_URL}/api/responsibilities-per-role/` + id);
+        return response.data;
+    } catch (e) {
+        throw new Error("Could not get role responsibilities by id");
+    }
+};
