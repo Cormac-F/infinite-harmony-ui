@@ -54,14 +54,40 @@ h1 {
 }
 
 .btn {
-    background-color: #283583;
+    background-color: #61a83f;
     border: none;
     color: #ffff;
 }
 
 .btn:hover {
-    background-color: #61a83f;
+    background-color: #283583;
     color: #ffff;
+}
+
+.btn-login {
+    background-color: #61a83f;
+    border: none;
+    color: #ffff;
+}
+ 
+.btn-login:hover {
+    background-color: #fff;
+    color: #283583;
+}
+
+.btn-logout {
+    background-color: #fff;
+    border: none;
+    color: #252d4f;
+}
+ 
+.btn-logout:hover {
+    background-color: #fff;
+    color: #61a83f;
+}
+
+.card {
+    background-color: #283583;
 }
 
 .text-container {
@@ -147,7 +173,7 @@ main .text-container em {
 }
 
 .btn:hover {
-    background-color: #61a83f;
+    background-color: #283583;
     color: #ffff;
 }
 
@@ -185,6 +211,7 @@ footer {
 .link-container a {
     color: #fff;
 }
+
 .jobs h2 {
     padding: 20px 0 20px 10px;
 }
