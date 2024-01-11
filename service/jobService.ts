@@ -35,5 +35,6 @@ module.exports.getRoleResponsibilityById = async function (id: number): Promise<
     } catch (e) {
         throw new Error("Could not get role responsibilities by id");
     }
+
 };
 
