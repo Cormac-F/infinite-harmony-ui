@@ -31,15 +31,15 @@ document.getElementById("logoutButtonIndex").addEventListener("click", async fun
 });
 
 function toggleNavMenu() {
-  var nav = document.getElementById('navbarNav');
-  nav.classList.toggle('show');
+  var nav = document.getElementById("navbarNav");
+  nav.classList.toggle("show");
 }
 
 // Close the burger menu when a link is clicked
-var navLinks = document.querySelectorAll('.navbar-nav a');
+var navLinks = document.querySelectorAll(".navbar-nav a");
 navLinks.forEach(function(link) {
-  link.addEventListener('click', function() {
-      var nav = document.getElementById('navbarNav');
-      nav.classList.remove('show');
+  link.addEventListener("click", function() {
+      var nav = document.getElementById("navbarNav");
+      nav.classList.remove("show");
   });
 });
