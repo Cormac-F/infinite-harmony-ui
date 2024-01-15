@@ -12,25 +12,30 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-light sticky-top shadow-sm p-3 bg-white rounded">
-        <div class="container">
+        <div class="container d-flex justify-content-between">
             <a class="navbar-brand pb-2" href="/">
                 <img src="../public/images/kainos-logo.png" alt="Kainos Logo" width="100" height="30">
             </a>
-            <div class="navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item ml-4">
-                        <a id="employee" class="nav-link" href="/job-roles">Employee</a>
-                    </li>
-                    <li class="nav-item ml-2">
-                        <a id="admin" class="nav-link" href="/capability">Admin</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="navbar-collapse justify-content-end mr-4">
-                <ul class="navbar-nav">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"> ☰ </span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end pr-2" id="navbarNav">                
+                <ul class="navbar-nav d-flex justify-content-end">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Log In</a>
+                        <a class="nav-link d-flex justify-content-end pr-2" href="/job-roles">Employee</a>
                     </li>
+                    <li class="nav-item">
+                        <a id="admin" class="nav-link d-flex justify-content-end pr-2" href="/capability">Admin</a>
+                    </li>
+                    {% if isLoggedIn %}
+                        <li class="nav-item d-flex justify-content-end pr-3">
+                            <td><button id="logoutButtonNavBar" class="nav-link btn-logout">Log Out</button>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link d-flex justify-content-end pr-2" href="/login">Log In</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -56,7 +61,7 @@
             <section class="jobs" id="jobs">
                 <form action="/confirm-edit-capability" method="post">
                     <div class="form-group">
-                        <h3>
+                        <h3 class="jobsh2">
                         <label for="capabilityName">Capability Name: {{ capabilityName }}</label>
                         </h3>
                         <a href="http://localhost:3000/edit-capability/{{ capabilityID }}">Edit</a>
@@ -93,5 +98,8 @@
             <div class="pt-4 pb-4">Copyright© 2023 Kainos. Registered in NI NI019370</div>
         </div>
     </footer>
+    <script src="/public/scripts/javascript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
