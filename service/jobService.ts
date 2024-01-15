@@ -6,9 +6,7 @@ const axios = require("axios");
 
 dotenv.config();
 
-
 const API_URL = process.env.API_URL;
-
 
 module.exports.getJobs = async function (): Promise<Job> {
     try {

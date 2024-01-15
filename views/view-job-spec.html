@@ -12,34 +12,31 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-light sticky-top shadow-sm p-3 bg-white rounded">
-        <div class="container">
+        <div class="container d-flex justify-content-between">
             <a class="navbar-brand pb-2" href="/">
                 <img src="../public/images/kainos-logo.png" alt="Kainos Logo" width="100" height="30">
             </a>
-            <div class="navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item ml-4">
-                        <a class="nav-link" href="/job-roles">Employee</a>
-                    </li>
-                    <li class="nav-item ml-2">
-                        <a id="admin" class="nav-link" href="/capability">Admin</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="navbar-collapse justify-content-end mr-4">
-            {% if isLoggedIn %}
-                <ul class="navbar-nav">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"> ☰ </span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end pr-2" id="navbarNav">                
+                <ul class="navbar-nav d-flex justify-content-end">
                     <li class="nav-item">
-                        <td><button id="logoutButtonNavBar" class="btn-logout">Log Out</button>
+                        <a class="nav-link d-flex justify-content-end pr-2" href="/job-roles">Employee</a>
                     </li>
-                </ul>
-            {% else %}
-                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/login">Log In</a>
+                        <a id="admin" class="nav-link d-flex justify-content-end pr-2" href="/capability">Admin</a>
                     </li>
+                    {% if isLoggedIn %}
+                        <li class="nav-item d-flex justify-content-end pr-2">
+                            <td><button id="logoutButtonNavBar" class="nav-link btn-logout">Log Out</button>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link d-flex justify-content-end pr-2" href="/login">Log In</a>
+                        </li>
+                    {% endif %}
                 </ul>
-            {% endif %}
             </div>
         </div>
     </nav>
@@ -48,7 +45,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                   <li class="breadcrumb-item"><a href="/">Home</a></li>
-                  <li class="breadcrumb-item"><a href="/job-roles">Jobs Roles</a></li>
+                  <li class="breadcrumb-item"><a href="/job-roles">Job Roles</a></li>
                   <li class="breadcrumb-item active" aria-current="/list-jobs:{ job.roleName }">{{ job.roleName }}</li>
                 </ol>
             </nav> 
@@ -60,7 +57,7 @@
             </div>
             {% endif %}
             <section class="jobs" id="jobs">
-                <h2>{{ job.roleName }}</h2>
+                <h2 class="jobsh2">{{ job.roleName }}</h2>
                 <div class="table-responsive-spec">
                     <table class="table lh-2" id="table-spec">
                         <thead>
@@ -138,5 +135,7 @@
         </div>
     </footer>
     <script src="/public/scripts/javascript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

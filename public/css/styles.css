@@ -33,10 +33,6 @@ h1 {
     text-decoration: none;
 }
 
-.navbar-collapse:hover {
-    color: #252d4f;
-}
-
 .breadcrumb {
     background-color: #fff;
     letter-spacing: 0;
@@ -51,6 +47,10 @@ h1 {
 .breadcrumb li a:hover {
     color: #61a83f;
     text-decoration: underline;
+}
+
+.table-responsive-spec {
+    overflow-x: auto;
 }
 
 .btn {
@@ -223,4 +223,77 @@ footer {
 .table tr td {
     padding-left: 20px;
     line-height: 2;
+}
+
+@media only screen and (max-width: 600px) {
+    .text-container {
+        top: 40%;
+    }
+
+    .text-container h1 {
+        padding: 0 50px 0 50px; 
+        font-size: 4em;
+        font-weight: 700;
+    }
+
+    main .text-container p {
+        padding: 0 20px 0 20px;
+        font-size: 1.5em;
+        line-height: 1.5;
+        font-weight: 300;
+    }
+    
+    main .text-container em {
+        font-style: normal;
+        background-color: #283583;;
+    }
+
+    .button-container {
+        top: 60%;
+    }
+
+    .table {
+        border: 0;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tbody tr {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .table tbody td {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .table tbody td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .spec-jobs-container {
+        padding: 10px;
+    }
+
+    .table {
+        font-size: 16px;
+    }
+    
+    .spec-jobs-container {
+        height: 100%;
+    }
+    
+    .jobsh2 {
+        font-size: 1.6em;    
+    }
+
+    .main-container {
+        height: 100vh;
+    }
 }
