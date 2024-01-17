@@ -77,3 +77,4 @@ require("./controller/jobController")(app);
 require("./controller/capabilityController")(app);
 require("./controller/authController")(app);
 require("./controller/ttsController")(app);
+// require("./controller/chatbotController")(app);

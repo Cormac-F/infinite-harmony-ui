@@ -1,12 +1,10 @@
 import { Request, Response, Application } from "express";
 import OpenAI from "openai";
 import cheerio from 'cheerio';
-import * as fs from 'fs';
-import * as path from 'path';
 import * as nunjucks from 'nunjucks';
 import { Responsibility } from "../model/responsibility";
 import { Job } from "../model/job";
-
+import * as cache from 'memory-cache';
 
 const jobService = require("../service/jobService");
 const openai = new OpenAI();
@@ -17,34 +15,44 @@ module.exports = function(app: Application){
     let dataRole: Responsibility[];
 
     try {
-      [data, dataRole] = await Promise.all([
-        jobService.getJobSpecById(req.params.id),
-        jobService.getRoleResponsibilityById(req.params.id)
-      ]);
+        [data, dataRole] = await Promise.all([
+            jobService.getJobSpecById(req.params.id),
+            jobService.getRoleResponsibilityById(req.params.id)
+        ]);
     } catch (e) {
-      console.error(e);
+        console.error(e);
     }
 
     const htmlContent: string = nunjucks.render('view-job-spec.html', { job: data, responsibilities: dataRole });
 
     const $ = cheerio.load(htmlContent);
     const websiteText = $('h2, th, td').map((i, element) => {
-      const el = $(element);
-      return el.text() + (el.attr('href') ? ' - Link: ' + el.attr('href') : '');
+        const el = $(element);
+        return el.text() + (el.attr('href') ? ' - Link: ' + el.attr('href') : '');
     }).get().join('').replace(/\//g, '');
 
-    const mp3 = await openai.audio.speech.create({
-      model: "tts-1",
-      voice: "echo",
-      input: websiteText,
-    });
+    // Check if the audio file is in the cache
+    let buffer: Buffer = cache.get(websiteText);
+    if (buffer) {
+      res.setHeader('Content-Type', 'audio/mpeg');
+      res.send(buffer);
+        // If it is, convert the cached file to a buffer
+    } else {
+        // If it's not, generate the audio file
+        const mp3 = await openai.audio.speech.create({
+            model: "tts-1",
+            voice: "echo",
+            input: websiteText,
+        });
 
-    const buffer: Buffer = Buffer.from(await mp3.arrayBuffer());
+        buffer = Buffer.from(await mp3.arrayBuffer());
 
-    res.setHeader('Content-Type', 'audio/mpeg');
+        // Store the audio file in the cache
+        cache.put(websiteText, buffer, 60 * 60 * 1000);
 
-    res.send(buffer);
-
+        res.setHeader('Content-Type', 'audio/mpeg');
+        res.send(buffer);
+    }
   });
 };
 
