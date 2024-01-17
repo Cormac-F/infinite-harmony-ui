@@ -10,7 +10,6 @@ import { Job } from "../model/job";
 
 const jobService = require("../service/jobService");
 const openai = new OpenAI();
-const speechFile = path.resolve("./view-job-spec.mp3");
 
 module.exports = function(app: Application){
   app.get('/generate-speech/:id', async (req: Request, res: Response) => {
@@ -18,10 +17,12 @@ module.exports = function(app: Application){
     let dataRole: Responsibility[];
 
     try {
-        data = await jobService.getJobSpecById(req.params.id);
-        dataRole = await jobService.getRoleResponsibilityById(req.params.id);
+      [data, dataRole] = await Promise.all([
+        jobService.getJobSpecById(req.params.id),
+        jobService.getRoleResponsibilityById(req.params.id)
+      ]);
     } catch (e) {
-        console.error(e);
+      console.error(e);
     }
 
     const htmlContent: string = nunjucks.render('view-job-spec.html', { job: data, responsibilities: dataRole });
