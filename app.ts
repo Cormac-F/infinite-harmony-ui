@@ -4,6 +4,8 @@ import { Job } from "./model/job";
 import { Capability } from "./model/capability";
 import config from "./config";
 import * as dotenv from 'dotenv';
+import OpenAI from "openai";
+import cheerio from 'cheerio';
 
 dotenv.config();
 
@@ -13,6 +15,8 @@ const nunjucks = require("nunjucks");
 const app = express();
 const session = require("express-session");
 const bodyParser = require("body-parser");
+const openai = new OpenAI();
+
 
 // Nunjucks Configuration
 const appViews = path.join(__dirname, "/views/");
@@ -72,3 +76,4 @@ app.get("/", async (req: Request, res: Response) => {
 require("./controller/jobController")(app);
 require("./controller/capabilityController")(app);
 require("./controller/authController")(app);
+require("./controller/ttsController")(app);
