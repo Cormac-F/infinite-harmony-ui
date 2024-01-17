@@ -105,13 +105,17 @@
                         {% endif %}
                     </table>
                 </div>
-                <div class="pb-3">
-                    <button class="btn" id="generate-speech">Generate Speech</button>
-                    <button class="btn" id="stop-speech" style="display: none;">Stop Speech</button>
-                    <audio controls id="audio-player" style="display: none;"></audio>
+                <div class="audio-controls">
+                    <div class="d-flex">
+                        <div>
+                            <button class="btn m-2" id="generate-speech">Generate Speech</button>
+                        </div>
+                        <div class="d-flex">
+                            <audio controls id="audio-player" style="display: none;"></audio>
+                            <button class="btn ml-2" id="stop-speech" style="display: none;">Stop Speech</button>
+                        </div>
+                    </div>
                 </div>
-            </section>
-        </div>
     </main>
     <footer id="footer" class="footer mt-auto py-3 shadow-sm">
         <div class="container text-center">
@@ -139,7 +143,7 @@
             <div class="pt-4 pb-4">Copyright© 2023 Kainos. Registered in NI NI019370</div>
         </div>
     </footer>
-    <script src="public/scripts/javascript.js"></script>
+    <script src="../public/scripts/javascript.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -153,18 +157,18 @@
             generateSpeechButton.style.display = 'none';
             stopSpeechButton.style.display = 'block';
             audioPlayer.play();
-        });
+            });
 
         document.getElementById('stop-speech').addEventListener('click', function() {
-        const audioPlayer = document.getElementById('audio-player');
-        const generateSpeechButton = document.getElementById('generate-speech');
-        const stopSpeechButton = document.getElementById('stop-speech');
-        if (audioPlayer) {
-            audioPlayer.pause();
-            audioPlayer.style.display = 'none';
-            stopSpeechButton.style.display = 'none';
-            generateSpeechButton.style.display = 'block';
-        }
+            const audioPlayer = document.getElementById('audio-player');
+            const generateSpeechButton = document.getElementById('generate-speech');
+            const stopSpeechButton = document.getElementById('stop-speech');
+            if (audioPlayer) {
+                audioPlayer.pause();
+                audioPlayer.style.display = 'none';
+                stopSpeechButton.style.display = 'none';
+                generateSpeechButton.style.display = 'block';
+            }
         });
     </script>
 </body>

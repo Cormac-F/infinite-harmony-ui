@@ -226,6 +226,16 @@ footer {
     line-height: 2;
 }
 
+.audio-controls {
+    position: fixed;
+    top: 65vh;
+    right: 8vh;
+    background: rgba(0,0,0,0.1);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
 @media only screen and (max-width: 600px) {
     .text-container {
         top: 40%;
