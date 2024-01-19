@@ -55,11 +55,25 @@
             </div>
         </section>
     </main>
-    <section>
+    <section class="d-flex justify-content-center">
         <div class="container h-100 mt-5 mb-5">
             <h2 class="pb-3">Information Section</h2>
             <p>This is some information about our company.</p>
             <p>Log in to get started.</p>
+        </div>
+    </section>
+    <section class="floating-section">
+        <div class="container-ai">
+            <h2 class="pb-3">Chat with Assistant</h2>
+            <div id="chat-container" class="chat-container">
+                {% for message in chatHistory %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+            <div class="input-container mt-3">
+                <input type="text" id="user-input" placeholder="Type your message...">
+                <button class="btn btn-primary" id="send-button">Send</button>
+            </div>            
         </div>
     </section>
     <footer class="footer mt-auto py-3">
@@ -85,11 +99,57 @@
                 </div>
             </div>
             <div class="pt-2 link-container">Contact us @ <a href="https://www.kainos.com">Kainos.com</a></div>
-            <div class="pt-4 pb-4">Copyright© 2023 Kainos. Registered in NI NI019370</div>
+            <div class="pt-4 pb-4">Copyright© 2024 Kainos. Registered in NI NI019370</div>
         </div>
     </footer>
+
     <script src="/public/scripts/javascript.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatContainer = document.getElementById('chat-container');
+            const userInput = document.getElementById('user-input');
+    
+            function appendMessage(role, content) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `chat-message ${role}-message`;
+                messageDiv.textContent = content;
+                chatContainer.appendChild(messageDiv);
+            }
+    
+            function sendMessage() {
+                const userMessage = userInput.value.trim();
+                if (userMessage !== '') {
+                    appendMessage('user', userMessage);
+    
+                    // Make an AJAX request to your server to handle the user input
+                    fetch('/ask', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ userMessage }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update the chat history with the assistant's response
+                        data.chatHistory.forEach(message => {
+                            appendMessage('assistant', message);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error sending message:', error);
+                    });
+    
+                    userInput.value = ''; // Clear the input field
+                }
+            }
+    
+            // Attach the sendMessage function to the button click event
+            document.getElementById('send-button').addEventListener('click', sendMessage);
+        });
+    </script>
+    <script src="https://cdn.socket.io/4.1.3/socket.io.min.js"></script>
+  
 </body>
 </html>
