@@ -1,16 +1,13 @@
 {
-    "compilerOptions": {
-        "outDir": "./dist/",
-        "target": "ES5",
-        "sourceMap": true,
-        "noImplicitAny": true,
-        "module": "commonjs",
-        "moduleResolution": "node",
-    },
-    "types": ["node", "dotenv/config"],
-    "include": ["./**/*"],
-    "exclude": [
-        "node_modules/**/*",
-        "./dist/**/*"
-    ]
+  "compilerOptions": {
+    "outDir": "app/dist",
+    "target": "ES5",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+  },
+  "types": ["node", "dotenv/config"],
+  "include": ["./**/*"],
+  "exclude": ["node_modules/**/*", "app/dist/**/*"],
 }

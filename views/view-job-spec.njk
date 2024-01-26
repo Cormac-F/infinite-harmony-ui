@@ -1,0 +1,104 @@
+{% extends "./templates/master.njk" %}
+
+{% block title %}
+  {{ job.roleName }} Specification Summary
+{% endblock %}
+
+{% block content %}
+  <main class="flex-shrink-0">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/job-roles">Job Roles</a></li>
+          <li
+            class="breadcrumb-item active"
+            aria-current="/list-jobs:{ job.roleName }"
+          >
+            {{ job.roleName }}
+          </li>
+        </ol>
+      </nav>
+    </div>
+    <div class="spec-jobs-container container" id="spec-container">
+      {% if errormessage %}
+        <div class="alert alert-danger" role="alert">{{ errormessage }}</div>
+      {% endif %}
+      <section class="jobs" id="jobs">
+        <h2 class="jobsh2">{{ job.roleName }}</h2>
+        <div class="table-responsive-spec">
+          <table class="table lh-2" id="table-spec">
+            <thead>
+              <tr>
+                <th scope="col">Job Role Specification Summary:</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if job %}
+              <tr>
+                <td class="spec-summary">{{ job.specSummary }}</td>
+              </tr>
+              <tr>
+                <td>
+                  <a
+                    target="_blank"
+                    href="{{ job.sharepointLink }}"
+                    class="btn btn-primary"
+                    >SharePoint Link</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+            {% else %}
+            <tbody>
+              <tr>
+                <td>Could not find job</td>
+              </tr>
+            </tbody>
+            {% endif %}
+          </table>
+          <table class="table lh-2" id="table-spec">
+            <thead class="">
+              <tr>
+                <th scope="col">Role Responsibilities:</th>
+              </tr>
+            </thead>
+            {% if responsibilities and responsibilities.length > 0 %}
+            <tbody>
+              {% for responsibility in responsibilities %}
+              <tr>
+                <td>{{ responsibility.responsibilityName }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+            {% else %}
+            <tbody>
+              <tr>
+                <td>Could not find responsibility</td>
+              </tr>
+            </tbody>
+            {% endif %}
+          </table>
+        </div>
+        <div class="audio-controls">
+          <div class="">
+            <div class="">
+              <button class="btn btn-bot btn-primary" id="generate-speech">
+                Play AI Audio
+              </button>
+            </div>
+            <div class="d-flex">
+              <audio controls id="audio-player" style="display: none"></audio>
+              <button class="btn ml-2 btn-bot btn-primary" id="stop-speech" style="display: none">
+                Stop AI Audio
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+{% endblock %}
+
+{% block chatbot %}
+{% endblock %}

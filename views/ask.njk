@@ -1,0 +1,13 @@
+{% extends "./templates/master.njk" %}
+
+{% block title %}
+  Chatbot | Kainos
+{% endblock %}
+
+{% block content %}
+  <div id="chat-window">
+      {% for message in chatHistory %}
+        <div class="message">{{ message }}</div>
+      {% endfor %}
+  </div>
+{% endblock %}

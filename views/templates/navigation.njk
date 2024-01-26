@@ -1,0 +1,64 @@
+{% extends "master.njk" %}
+
+{% block navigation %}    
+  <nav class="navbar navbar-expand-lg bg-light sticky-top shadow-sm p-3 bg-white rounded">
+    <div class="container d-flex justify-content-between">
+      <a class="navbar-brand pb-2" href="/">
+        <img
+          src="../public/images/kainos-logo.png"
+          alt="Kainos Logo"
+          width="100"
+          height="30"
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"> ☰ </span>
+      </button>
+      <div
+        class="collapse navbar-collapse justify-content-end pr-2"
+        id="navbarNav">
+        <ul class="navbar-nav d-flex justify-content-end">
+          <li class="nav-item">
+            <a
+              class="nav-link d-flex justify-content-end pr-2"
+              href="/job-roles"
+              >Employee</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              id="admin"
+              class="nav-link d-flex justify-content-end pr-2"
+              href="/capability"
+              >Admin</a
+            >
+          </li>
+          {% if isLoggedIn %}
+          <li class="nav-item d-flex justify-content-end pr-2">
+            <td>
+              <button id="logoutButtonNavBar" class="nav-link btn-logout">
+                Log Out
+              </button>
+            </td>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link d-flex justify-content-end pr-2" href="/login"
+              >Log In</a
+            >
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+{% endblock %}

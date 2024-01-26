@@ -13,7 +13,7 @@ describe("LoginTest", () => {
       await driver.findElement(By.id("username")).sendKeys("test@test.com");
       await driver.findElement(By.id("password")).sendKeys("test");
       await driver.findElement(By.id("btn-login")).click();
-        
+
       await driver.wait(until.elementLocated(By.id("login-error")), 5000);
     } finally {
       await driver.quit();
