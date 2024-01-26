@@ -1,0 +1,54 @@
+{% extends "./templates/master.njk" %}
+
+{% block title %}
+  Edit a Capability Name | Kainos
+{% endblock %}
+
+{% block content %}
+  <main class="flex-shrink-0">
+    <div class="container pt-1">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item">
+            <a href="/capability">Capabilities</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="/edit-capability/{{ capabilityID }}"
+              >{{ capabilityName }}</a
+            >
+          </li>
+          <li
+            class="breadcrumb-item active"
+            aria-current="/confirm-edit-capability"
+          >
+            Confirm Edit
+          </li>
+        </ol>
+      </nav>
+    </div>
+    <div class="confirm-edit-capability container" id="confirm-container">
+      {% if errormessage %}
+      <div class="alert alert-danger" role="alert">{{ errormessage }}</div>
+      {% endif %}
+      <section class="jobs" id="jobs">
+        <form action="/confirm-edit-capability" method="post">
+          <div class="form-group">
+            <h3 class="jobsh2">
+              <label for="capabilityName"
+                >Capability Name: {{ capabilityName }}</label
+              >
+            </h3>
+            <a href="http://localhost:3000/edit-capability/{{ capabilityID }}"
+              >Edit</a
+            >
+          </div>
+          <button type="submit" class="btn btn-primary">Confirm</button>
+        </form>
+      </section>
+    </div>
+  </main>
+{% endblock %}
+
+{% block chatbot %}
+{% endblock %}

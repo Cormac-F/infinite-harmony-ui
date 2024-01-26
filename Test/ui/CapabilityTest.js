@@ -14,11 +14,21 @@ describe("CapabilityTest", () => {
 
       await driver.wait(until.elementLocated(By.id("jobs-container")), 5000);
 
-      await driver.executeScript("arguments[0].scrollIntoView(true);", await driver.findElement(By.id("jobs-container")));
+      await driver.executeScript(
+        "arguments[0].scrollIntoView(true);",
+        await driver.findElement(By.id("jobs-container")),
+      );
 
-      await driver.wait(until.elementLocated(By.css("#job-table tbody tr:first-child td:last-child")), 5000);
+      await driver.wait(
+        until.elementLocated(
+          By.css("#job-table tbody tr:first-child td:last-child"),
+        ),
+        5000,
+      );
 
-      const capabilityName = await driver.findElement(By.css("#job-table tbody tr:first-child td:last-child")).getText();
+      const capabilityName = await driver
+        .findElement(By.css("#job-table tbody tr:first-child td:last-child"))
+        .getText();
 
       chai.assert.isNotEmpty(capabilityName);
     } finally {

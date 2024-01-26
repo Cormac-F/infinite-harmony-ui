@@ -7,11 +7,11 @@ dotenv.config();
 const { API_URL } = process.env;
 
 module.exports.login = async function (login: Login): Promise<void> {
-    try {
-        const response = await axios.post(`${API_URL}/api/login`, login);
+  try {
+    const response = await axios.post(`${API_URL}/api/login`, login);
 
-        return response.data;
-    } catch (e) {
-        throw new Error("Could not login");
-    }
+    return response.data;
+  } catch (e) {
+    throw new Error("Could not login");
+  }
 };

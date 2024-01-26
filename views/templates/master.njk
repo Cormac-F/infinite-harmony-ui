@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap" />
+    <title>
+     {% block title %}
+     {% endblock %}
+    </title>
+    <link rel="icon" href="../public/images/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../public/css/styles.css" />
+  </head>
+  <body>
+
+  {% block navigation %}    
+    <nav class="navbar navbar-expand-lg bg-light sticky-top shadow-sm p-3 bg-white rounded">
+      <div class="container d-flex justify-content-between">
+        <div>
+          <a class="navbar-brand pb-2" href="/">
+            <img
+              src="../public/images/kainos-logo.png"
+              alt="Kainos Logo"
+              width="100"
+              height="30"
+            />
+          </a>
+        </div>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          <span class="navbar-toggler-icon"> ☰ </span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end pr-2" id="navbarNav">
+          <div>
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a
+                  class="nav-link pr-3"
+                  href="/job-roles"
+                  >Employee</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  id="admin"
+                  class="nav-link pr-5"
+                  href="/capability"
+                  >Admin</a
+                >
+              </li>
+            </ul>
+          </div>
+          {% if isLoggedIn %}
+            <div>
+              <ul class="navbar-nav">
+                <li class="nav-item pl-5 pr-2">
+                  <td>
+                    <button id="logoutButtonNavBar" class="nav-link btn-logout">
+                      Log Out
+                    </button>
+                  </td>
+                </li>
+                {% else %}
+                <li class="nav-item d-flex pl-5 pr-2">
+                  <td>
+                    <a id="logoutButtonNavBar" class="nav-link btn-logout" href="/login"
+                      >Log In</a>
+                  </td>
+                </li>          
+              </ul>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+  {% endblock %}
+
+  {% block content %}
+  {% endblock %}
+
+  {% block chatbot %}
+    <div class="floating-section-button" id="containerToggleChatButton">
+      <div><button id="toggleChatButton" class="btn btn-bot btn-primary">Open AI Chat</button>
+      </div>
+    </div>  
+
+    <section class="floating-section hidden" id="chatSection">
+      <div class="container-ai">
+        <h4 class="pb-3 text-center">Chat with the Assistant</h4>
+        <div id="chatContainer" class="container chat-container border overflow-auto" style="height:230px">
+
+        </div>
+        <div class="container input-container mt-2">
+          <form onsubmit="submitForm(event)" class="input-container">
+            <input type="text" name="userInput" id="userInput" placeholder="Type your message..." />
+            <button type="submit" class="btn btn-primary" id="sendButton">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  {% endblock %}
+
+  {% block footer %}
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <div class="mt-3 mb-2">
+              <p class="mb-4">Need help?</p>
+              <div class="row mb-4">
+                <div class="col">
+                  <div class="link-container">
+                    <a
+                      target="_blank"
+                      href="https://kainossoftwareltd.sharepoint.com/SitePages/Home.aspx"
+                      >SharePoint</a>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="link-container">
+                    <a
+                      target="_blank"
+                      href="https://kainoshelp.atlassian.net/servicedesk/customer/portals"
+                      >Jira Request</a>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="link-container">
+                    <a target="_blank" href="https://web.yammer.com/main/"
+                      >Viva Engage</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pt-2 link-container">
+              Contact us @ <a href="https://www.kainos.com">Kainos.com</a>
+            </div>
+            <div class="pt-4 pb-4">
+              Copyright© 2024 Kainos. Registered in NI NI019370
+            </div>
+        </div>
+    </footer>
+  {% endblock %}
+
+  {% block javascript %}
+    <script src="/public/scripts/javascript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.getElementById("toggleChatButton").addEventListener("click", function () {
+        const chatSection = document.getElementById("chatSection");
+        const toggleChatButton = document.getElementById("toggleChatButton");
+
+        chatSection.classList.toggle("hidden");
+
+        if (chatSection.classList.contains("hidden")) {
+          toggleChatButton.style.width = "15vh";
+          toggleChatButton.style.height = "5vh";
+          toggleChatButton.textContent = "Open Chat";
+        } else {
+          toggleChatButton.style.width = "15vh";
+          toggleChatButton.style.height = "5vh";
+          toggleChatButton.textContent = "Close Chat";
+        }
+      });
+    </script>
+    <script>
+      function submitForm(event) {
+        event.preventDefault();
+        const userQuestion = document.getElementById("userInput").value.toLowerCase();
+
+        try {
+          if (userQuestion === "") {
+            alert("Please type a message");
+          } else {
+            fetch('/ask', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ userInput: userQuestion }),
+            })
+              .then(response => response.json())
+              .then(data => {
+                displayMessages(data);
+              })
+              .catch((error) => {
+                console.error('An error occurred:', error);
+                alert('An error occurred, please try again');
+              })
+              .finally(() => {
+                document.getElementById("userInput").value = "";
+              });
+          }
+        } catch (error) {
+          console.error('An error occurred:', error);
+          alert('An error occurred, please try again');
+        }
+      }
+
+      function displayMessages(messages) {
+        const chatContainer = document.getElementById("chatContainer");
+        
+        messages.forEach((message) => {
+          const messageElement = document.createElement("p");
+          messageElement.style.marginTop = "10px";
+          messageElement.style.padding = "10px";
+          messageElement.style.borderRadius = "10px";
+
+          if (message.role === "You") {
+            messageElement.style.textAlign = "right";
+            messageElement.innerHTML = `<span>You: </span><span>${message.content}</span>`;
+          } else if (message.role === "Assistant") {
+            messageElement.style.textAlign = "left";
+            messageElement.innerHTML = `<span>Assistant: </span><span>${message.content}</span>`;
+          }
+
+          chatContainer.appendChild(messageElement);
+        });
+      }
+    </script>
+    <script>
+      document
+        .getElementById("generate-speech")
+        .addEventListener("click", function () {
+          const jobId = "{{ job.roleID }}";
+          const audioPlayer = document.getElementById("audio-player");
+          const generateSpeechButton =
+            document.getElementById("generate-speech");
+          const stopSpeechButton = document.getElementById("stop-speech");
+          audioPlayer.src = `http://localhost:3000/generate-speech/${jobId}`;
+          audioPlayer.style.display = "block";
+          generateSpeechButton.style.display = "none";
+          stopSpeechButton.style.display = "block";
+          audioPlayer.play();
+        });
+
+      document
+        .getElementById("stop-speech")
+        .addEventListener("click", function () {
+          const audioPlayer = document.getElementById("audio-player");
+          const generateSpeechButton =
+            document.getElementById("generate-speech");
+          const stopSpeechButton = document.getElementById("stop-speech");
+          if (audioPlayer) {
+            audioPlayer.pause();
+            audioPlayer.style.display = "none";
+            stopSpeechButton.style.display = "none";
+            generateSpeechButton.style.display = "block";
+          }
+        });
+    </script>
+  {% endblock %}
+
+  </body>
+</html>

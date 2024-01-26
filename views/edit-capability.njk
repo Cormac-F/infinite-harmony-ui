@@ -1,0 +1,54 @@
+{% extends "./templates/master.njk" %}
+
+{% block title %}
+  Edit Capability Name: {{ capability.capabilityName }}
+{% endblock %}
+
+{% block content %}
+  <main class="flex-shrink-0">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item">
+            <a href="/capability">Capabilities</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="/edit-capability">
+            {{ capability.capabilityName }}
+          </li>
+        </ol>
+      </nav>
+    </div>
+    <div class="edit-capability container" id="edit-capability-container">
+      {% if errormessage %}
+      <div class="alert alert-danger" role="alert">{{ errormessage }}</div>
+      {% endif %}
+      <section class="jobs" id="jobs">
+        <tbody>
+          <h2 class="jobsh2">{{ capability.capabilityName }}</h2>
+          <div class="table-responsive-edit">
+            <table class="table lh-2" id="table-edit">
+              <form action="/edit-capability" method="post">
+                <div class="form-group">
+                  <label for="capabilityName">Edit Capability Name:</label>
+                  <input
+                    type="text"
+                    id="capabilityName"
+                    name="capabilityName"
+                    class="form-control"
+                    value="{{ capabilityName }}"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary">Next</button>
+              </form>
+            </table>
+          </div>
+        </tbody>
+      </section>
+    </div>
+  </main>
+{% endblock %}
+
+{% block chatbot %}
+{% endblock %}

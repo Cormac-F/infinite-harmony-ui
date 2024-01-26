@@ -1,4 +1,4 @@
 export class Capability {
-    capabilityName?:string;
-    capabilityID?:number;
+  capabilityName?: string;
+  capabilityID?: number;
 }

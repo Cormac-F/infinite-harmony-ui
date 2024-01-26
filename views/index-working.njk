@@ -1,0 +1,153 @@
+{% extends "./templates/master.njk" %}
+
+{% block title %}
+  Job Management System | Kainos
+{% endblock %}
+
+{% block content %}
+  <main class="flex-shrink-0 hero-section">
+      <section class="col-sm-12 text-center bg-white position-relative">
+        <div class="text-container">
+          <h1 class="display-4 pt-3 pb-2"><em>Welcome to Kainos</em></h1>
+          <p class="lead">
+            <em>Digital Transformation Experts and WorkDay Partners</em>
+          </p>
+        </div>
+        <div class="button-container col-sm-12">
+          {% if isLoggedIn %}
+          <td>
+            <button
+              id="logoutButtonIndex"
+              class="btn btn-primary mt-5 btn-lg shadow-sm"
+            >
+              Log Out
+            </button>
+            {% else %}
+            <a
+              id="login"
+              class="btn btn-primary mt-5 btn-lg shadow-sm"
+              href="/login"
+              >Log In</a
+            >
+            {% endif %}
+          </td>
+        </div>
+      </section>
+  </main>
+  <section class="d-flex justify-content-center">
+    <div class="container h-100 mt-5 mb-5">
+      <h2 class="pb-3">Information Section</h2>
+      <p>This is some information about our company.</p>
+      <p>Log in to get started.</p>
+    </div>
+  </section>
+
+
+  <section class="floating-section">
+    <div class="container-ai">
+      <h2 class="pb-3">Chat with Assistant</h2>
+      <div id="chatContainer" class="container chat-container border overflow-auto" style="height:230px">
+
+      </div>
+      <div class="container input-container mt-3">
+        <form action="/ask" method="post" class="input-container">
+          <input type="text" name="userInput" id="userInput" placeholder="Type your message..." />
+          <button type="submit" class="btn btn-primary" id="sendButton">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+{% endblock %}
+
+{% block javascript %}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.socket.io/4.1.3/socket.io.min.js"></script>
+  <script src="/public/scripts/javascript.js"></script>
+  <script>
+    var sendButton = document.getElementById("sendButton");
+    var userInput = document.getElementById("userInput");
+    var chatContainer = document.getElementById("chatContainer");
+
+    var user = {message: ""};
+
+    var arrayOfPossibleMessages = [
+      { message:"hi", response:"Hello there! I'm here to help you find information about a job!" }
+    ]
+
+
+    function sendMessage(userMessage){
+      var messageElement = document.createElement("p");
+      messageElement.style.padding = "10px";
+      messageElement.style.backgroundColor = "#283583";
+      messageElement.style.color = "white";
+      messageElement.style.borderRadius = "10px";
+      messageElement.style.textAlign = "right";
+      messageElement.style.marginTop = "10px";
+      messageElement.style.marginLeft = "90px";
+
+      messageElement.innerHTML = "<span> You: </span>" + 
+                                  "<span>" + userMessage + "</span>";
+
+      chatContainer.appendChild(messageElement);
+    }
+
+    function chatbotResponse(userMessage){
+
+      var chatBotMessage = "";
+
+      if (userMessage.length > 5 || userMessage == "hi"){
+        var result = arrayOfPossibleMessages.filter(val => val.message.includes(userMessage.toLowerCase()))
+
+        if(result.length > 0){
+          var response = result[0].response;
+          chatBotMessage = response;
+        } else {
+          chatBotMessage = "Sorry, I don't understand that message";
+        }
+      }else{
+        chatBotMessage = "Sorry, ask me something else";
+      }
+
+      var messageElement = document.createElement("p");
+      messageElement.style.padding = "10px";
+      messageElement.style.backgroundColor = "#61a83f";
+      messageElement.style.color = "white";
+      messageElement.style.borderRadius = "10px";
+      messageElement.style.textAlign = "left";
+      messageElement.style.marginRight = "90px";
+      messageElement.style.lineHeight = "1.2";
+
+      messageElement.innerHTML = "<span> Assistant: </span>" + 
+                                  "<span>" + chatBotMessage + "</span>";
+
+      setTimeout(function(){
+        messageElement.animate(
+        [{ easing: "ease-in", opacity: 0.6 },
+        { opacity: 1 }],
+        { duration: 500 })
+        chatContainer.appendChild(messageElement);
+        chatContainer.scrollTop = chatContainer.scrollHeight;
+      }, 1000);
+    };
+
+
+    sendButton.addEventListener("click", function (e){
+      
+      var userMessage = userInput.value.toLowerCase();
+      
+      if(userMessage == ""){
+        alert("Please type a message");
+      } else {
+        let userMessageText = userMessage.trim();
+        user.message = userMessageText;
+        userInput.value = "";
+        sendMessage(userMessageText);
+        chatbotResponse(userMessageText)
+      }
+    })
+  
+  </script>
+{% endblock %}

@@ -1,3 +1,3 @@
 export class Responsibility {
-    responsibilityName?: string;
+  responsibilityName?: string;
 }
